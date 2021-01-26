@@ -31,29 +31,61 @@
 
 //******************************************************************************
 //Variables
-//******************************************************************************
-
+//****************************************************************************** 
+int contador = 0;
+int contador2 = 0;
+int GO_var = 0;
 //******************************************************************************
 //Prototipos de funciones
 //******************************************************************************
-void setup (void);
-void semaf (void);
+void setup(void);
+void semaf(void);
+void leds_1(void);
+void leds_2(void);
+
 //******************************************************************************
 //Ciclo Principal
 //******************************************************************************
+
 void main(void) {
     setup();
-    
-    while(1){
-         if (PORTAbits.RA0 == 0)
+
+    while (1) {
+        if (PORTAbits.RA0 == 0) {
             semaf();
-        
+        }
+
+        if (GO_var == 1) {
+            if (PORTAbits.RA1 == 0) {
+                while (PORTAbits.RA1 == 0) {
+                    contador = contador;
+                }
+                contador = contador + 1;
+                if (contador <= 9){
+                    leds_1();
+                }
+
+            }
+            if (PORTAbits.RA2 == 0) {
+                while (PORTAbits.RA2 == 0) {
+                    contador2 = contador2;
+                }
+                contador2 = contador2 + 1;
+                if (contador2 <=9 ){
+                    leds_2();
+                }
+
+            }
+
+        }
     }
 }
+
 //******************************************************************************
 //Configuracion
 //******************************************************************************
-void setup (void){
+
+void setup(void) {
     ANSEL = 0;
     ANSELH = 0;
     TRISC = 0;
@@ -66,23 +98,78 @@ void setup (void){
     PORTB = 0;
     TRISA = 0b00000111;
     PORTA = 0;
-    
-    
-    
-            
-    
+
+
+
+
+
 }
 //******************************************************************************
 //Funciones
 //******************************************************************************
-void semaf(void){
+
+void semaf(void) {
     PORTEbits.RE0 = 1;
     __delay_ms(800);
     PORTEbits.RE0 = 0;
-      PORTEbits.RE1 = 1;
+    PORTEbits.RE1 = 1;
     __delay_ms(800);
     PORTEbits.RE1 = 0;
-        PORTEbits.RE2 = 1;
+    PORTEbits.RE2 = 1;
     __delay_ms(800);
     PORTEbits.RE2 = 0;
+    GO_var = 1;
+}
+
+void leds_1(void) {
+    if (contador == 1) {
+        PORTC = 0b00000001;
+    } 
+    else if (contador == 2) {
+        PORTC = 0b00000010;
+    }
+    else if (contador == 3) {
+        PORTC = 0b00000100;
+    } 
+    else if (contador == 4) {
+        PORTC = 0b00001000;
+    } 
+    else if (contador == 5) {
+        PORTC = 0b00010000;
+    } 
+    else if (contador == 6) {
+        PORTC = 0b00100000;
+    } 
+    else if (contador == 7) {
+        PORTC = 0b01000000;
+    } 
+    else if (contador == 8) {
+        PORTC = 0b10000000;
+    }
+}
+void leds_2(void) {
+    if (contador2 == 1) {
+        PORTD = 0b00000001;
+    } 
+    else if (contador2 == 2) {
+        PORTD = 0b00000010;
+    }
+    else if (contador2 == 3) {
+        PORTD = 0b00000100;
+    } 
+    else if (contador2 == 4) {
+        PORTD = 0b00001000;
+    } 
+    else if (contador2 == 5) {
+        PORTD = 0b00010000;
+    } 
+    else if (contador2 == 6) {
+        PORTD = 0b00100000;
+    } 
+    else if (contador2 == 7) {
+        PORTD = 0b01000000;
+    } 
+    else if (contador2 == 8) {
+        PORTD = 0b10000000;
+    }
 }
