@@ -2542,6 +2542,8 @@ void main(void) {
             GO_var = 0;
             PORTC = 0b0000000;
             PORTD = 0b0000000;
+            PORTBbits.RB0 = 0;
+            PORTBbits.RB1 = 0;
 
             while (PORTAbits.RA0 == 0) {
                     semaf_var = semaf_var;

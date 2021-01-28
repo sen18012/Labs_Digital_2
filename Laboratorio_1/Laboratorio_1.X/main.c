@@ -34,7 +34,7 @@
 //****************************************************************************** 
 int contador = 0;
 int contador2 = 0;
-int GO_var = 0;
+int GO_var = 0; //Bandera que permite iniciar la carrera
 int semaf_var = 0;
 //******************************************************************************
 //Prototipos de funciones
@@ -52,18 +52,20 @@ void ganador_2(void);
 
 void main(void) {
     setup();
-
+    
     while (1) {
-        if (PORTAbits.RA0 == 0) {
-            PORTBbits.RB0 = 0;
+        if (PORTAbits.RA0 == 0) { //al presionar el boton de inicio del semáforo
+            PORTBbits.RB0 = 0;    //se hace un reset de variables y puertos
             PORTBbits.RB1 = 0;
             contador = 0;
             contador2 = 0;
             GO_var = 0;
             PORTC = 0b0000000;
             PORTD = 0b0000000;
+            PORTBbits.RB0 = 0;
+            PORTBbits.RB1 = 0;
             
-            while (PORTAbits.RA0 == 0) {
+            while (PORTAbits.RA0 == 0) { //el jugador no puede iniciar antes que se active el semádoto
                     semaf_var = semaf_var;
                     GO_var = 0;
                 }
@@ -72,29 +74,29 @@ void main(void) {
         }
 
         if (GO_var == 1) {
-            if (PORTAbits.RA1 == 0) {
-                while (PORTAbits.RA1 == 0) {
+            if (PORTAbits.RA1 == 0) { 
+                while (PORTAbits.RA1 == 0) { //ciclo para debouncing
                     contador = contador;
                 }
                 contador = contador + 1;
                 if (contador <= 8){
-                    leds_1();
+                    leds_1(); //función para indicar que led debe encenderse
                 }
                 else{
-                  ganador_1();  
+                  ganador_1();  //función que indica que ganó el jugador 1
                 }
             }
         
             if (PORTAbits.RA2 == 0) {
-                while (PORTAbits.RA2 == 0) {
+                while (PORTAbits.RA2 == 0) { //ciclo para debouncing
                     contador2 = contador2;
                 }
                 contador2 = contador2 + 1;
                 if (contador2 <=8 ){
-                    leds_2();
+                    leds_2();   //función para indicar que led debe encenderse
                 }
                 else{
-                  ganador_2();  
+                  ganador_2();  //función que indica que ganó el jugador 2
                 }
 
             }
@@ -118,13 +120,13 @@ void setup(void) {
     PORTE = 0;
     TRISB = 0;
     PORTB = 0;
-    TRISA = 0b00000111;
+    TRISA = 0b00000111; 
     PORTA = 0;
-
-
-
-
-
+    
+    
+    
+    
+    
 }
 //******************************************************************************
 //Funciones
@@ -140,10 +142,10 @@ void semaf(void) {
     PORTEbits.RE2 = 1;
     __delay_ms(800);
     PORTEbits.RE2 = 0;
-    GO_var = 1;
+    GO_var = 1; //se levcanta la bandera que permite empezar a los usuarios
 }
 
-void leds_1(void) {
+void leds_1(void) { //se asigna un valor al puerto C según el valor del contador
     if (contador == 1) {
         PORTC = 0b00000001;
     } 
@@ -169,7 +171,7 @@ void leds_1(void) {
         PORTC = 0b10000000;
     }
 }
-void leds_2(void) {
+void leds_2(void) { //se asigna un valor al puerto D según el valor del contador
     if (contador2 == 1) {
         PORTD = 0b00000001;
     } 
@@ -195,15 +197,15 @@ void leds_2(void) {
         PORTD = 0b10000000;
     }
 }
-void ganador_1(void) {
-    PORTC = 0b00000000;
+void ganador_1(void) { //se cambia el bit que muestra la victoria del jugador
+    PORTC = 0b00000000; //se apaga todo el puerto de dicho jugador y se reinician los contadores 
     GO_var = 0;
     PORTBbits.RB0 = 1;
     contador = 0;
     contador2 = 0;
 }
-void ganador_2(void) {
-    PORTD = 0b00000000;
+void ganador_2(void) { //se cambia el bit que muestra la victoria del jugador
+    PORTD = 0b00000000; //se apaga todo el puerto de dicho jugador y se reinician los contadores
     GO_var = 0;
     PORTBbits.RB1 = 1;
     contador = 0;

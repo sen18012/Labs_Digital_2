@@ -13,17 +13,17 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "53 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_1\Laboratorio_1.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"110
+"112
 [v _setup setup `(v  1 e 1 0 ]
-"133
+"135
 [v _semaf semaf `(v  1 e 1 0 ]
-"146
+"148
 [v _leds_1 leds_1 `(v  1 e 1 0 ]
-"172
+"174
 [v _leds_2 leds_2 `(v  1 e 1 0 ]
-"198
+"200
 [v _ganador_1 ganador_1 `(v  1 e 1 0 ]
-"205
+"207
 [v _ganador_2 ganador_2 `(v  1 e 1 0 ]
 "166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -92,35 +92,35 @@
 "53
 [v _main main `(v  1 e 1 0 ]
 {
-"104
+"106
 } 0
-"110
+"112
 [v _setup setup `(v  1 e 1 0 ]
 {
-"128
+"130
 } 0
-"133
+"135
 [v _semaf semaf `(v  1 e 1 0 ]
 {
-"144
+"146
 } 0
-"172
+"174
 [v _leds_2 leds_2 `(v  1 e 1 0 ]
 {
-"197
+"199
 } 0
-"146
+"148
 [v _leds_1 leds_1 `(v  1 e 1 0 ]
 {
-"171
+"173
 } 0
-"205
+"207
 [v _ganador_2 ganador_2 `(v  1 e 1 0 ]
 {
-"211
+"213
 } 0
-"198
+"200
 [v _ganador_1 ganador_1 `(v  1 e 1 0 ]
 {
-"204
+"206
 } 0

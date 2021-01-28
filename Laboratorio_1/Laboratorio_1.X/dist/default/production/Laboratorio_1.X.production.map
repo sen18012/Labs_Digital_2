@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Laboratorio_1.X.production.sym \
   --cmf=dist/default/production\Laboratorio_1.X.production.cmf -z -Q16F887 \
-  -oC:\Users\katha\AppData\Local\Temp\sd3s.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\katha\AppData\Local\Temp\sa04.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Laboratorio_1.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\katha\AppData\Local\Temp\sd3s.o \
+  -pfunctab=ENTRY -k C:\Users\katha\AppData\Local\Temp\sa04.o \
   dist/default/production\Laboratorio_1.X.production.o 
 
 Object code version is 3.11
@@ -28,19 +28,19 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\katha\AppData\Local\Temp\sd3s.o
+C:\Users\katha\AppData\Local\Temp\sa04.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\Laboratorio_1.X.production.o
                 cinit                               7F4      7F4        C      FE8       0
                 config                             2007     2007        2        0       4
-                text6                               63D      63D        B      C7A       0
-                text5                               648      648        B      C90       0
-                text4                               6B1      6B1       60      D62       0
-                text3                               711      711       60      E22       0
-                text2                               677      677       3A      CEE       0
-                text1                               653      653       24      CA6       0
-                maintext                            771      771       83      EE2       0
+                text6                               63B      63B        B      C76       0
+                text5                               646      646        B      C8C       0
+                text4                               6AF      6AF       60      D5E       0
+                text3                               70F      70F       60      E1E       0
+                text2                               675      675       3A      CEA       0
+                text1                               651      651       24      CA2       0
+                maintext                            76F      76F       85      EDE       0
                 cstackCOMMON                         78       78        3       70       1
                 bssCOMMON                            70       70        8       70       1
 
@@ -50,13 +50,13 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 end_init                              0        0        3         0
                 cinit                               7F4      7F4        C         0
-                text6                               63D      63D        B         0
-                text5                               648      648        B         0
-                text4                               6B1      6B1       60         0
-                text3                               711      711       60         0
-                text2                               677      677       3A         0
-                text1                               653      653       24         0
-                maintext                            771      771       83         0
+                text6                               63B      63B        B         0
+                text5                               646      646        B         0
+                text4                               6AF      6AF       60         0
+                text3                               70F      70F       60         0
+                text2                               675      675       3A         0
+                text1                               651      651       24         0
+                maintext                            76F      76F       85         0
 
         CLASS   STRCODE        
 
@@ -104,13 +104,13 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
                 bssCOMMON                      000070  00000B  00007B        70       1  COMMON      1
-                text6                          00063D  00000B  000648       C7A       0  CODE        2
-                text5                          000648  00000B  000653       C90       0  CODE        2
-                text1                          000653  000024  000677       CA6       0  CODE        2
-                text2                          000677  00003A  0006B1       CEE       0  CODE        2
-                text4                          0006B1  000060  000711       D62       0  CODE        2
-                text3                          000711  000060  000771       E22       0  CODE        2
-                maintext                       000771  000083  0007F4       EE2       0  CODE        2
+                text6                          00063B  00000B  000646       C76       0  CODE        2
+                text5                          000646  00000B  000651       C8C       0  CODE        2
+                text1                          000651  000024  000675       CA2       0  CODE        2
+                text2                          000675  00003A  0006AF       CEA       0  CODE        2
+                text4                          0006AF  000060  00070F       D5E       0  CODE        2
+                text3                          00070F  000060  00076F       E1E       0  CODE        2
+                maintext                       00076F  000085  0007F4       EDE       0  CODE        2
                 cinit                          0007F4  00000C  000800       FE8       0  CODE        2
 
 
@@ -121,13 +121,13 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-063C            63A           2
+        CODE             0003-063A            638           2
                          0800-1FFF            800
         COMMON           007B-007D              3           1
-        CONST            0003-063C            100           2
+        CONST            0003-063A            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-063C            100           2
+        ENTRY            0003-063A            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0020-006F             50           1
@@ -139,9 +139,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
-        STRCODE          0003-063C            63A           2
+        STRCODE          0003-063A            638           2
                          0800-1FFF           1800
-        STRING           0003-063C            100           2
+        STRING           0003-063A            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -238,23 +238,23 @@ ___sp                    stack        0000
 ___stackhi               (abs)        0000
 ___stacklo               (abs)        0000
 __end_of__initialization cinit        07FC
-__end_of_ganador_1       text6        0648
-__end_of_ganador_2       text5        0653
-__end_of_leds_1          text4        0711
-__end_of_leds_2          text3        0771
+__end_of_ganador_1       text6        0646
+__end_of_ganador_2       text5        0651
+__end_of_leds_1          text4        070F
+__end_of_leds_2          text3        076F
 __end_of_main            maintext     07F4
-__end_of_semaf           text2        06B1
-__end_of_setup           text1        0677
+__end_of_semaf           text2        06AF
+__end_of_setup           text1        0675
 __initialization         cinit        07F4
 __pbssCOMMON             bssCOMMON    0070
 __pcstackCOMMON          cstackCOMMON 0078
-__pmaintext              maintext     0771
-__ptext1                 text1        0653
-__ptext2                 text2        0677
-__ptext3                 text3        0711
-__ptext4                 text4        06B1
-__ptext5                 text5        0648
-__ptext6                 text6        063D
+__pmaintext              maintext     076F
+__ptext1                 text1        0651
+__ptext2                 text2        0675
+__ptext3                 text3        070F
+__ptext4                 text4        06AF
+__ptext5                 text5        0646
+__ptext6                 text6        063B
 __size_of_ganador_1      (abs)        0000
 __size_of_ganador_2      (abs)        0000
 __size_of_leds_1         (abs)        0000
@@ -264,14 +264,14 @@ __size_of_semaf          (abs)        0000
 __size_of_setup          (abs)        0000
 _contador                bssCOMMON    0076
 _contador2               bssCOMMON    0074
-_ganador_1               text6        063D
-_ganador_2               text5        0648
-_leds_1                  text4        06B1
-_leds_2                  text3        0711
-_main                    maintext     0771
-_semaf                   text2        0677
+_ganador_1               text6        063B
+_ganador_2               text5        0646
+_leds_1                  text4        06AF
+_leds_2                  text3        070F
+_main                    maintext     076F
+_semaf                   text2        0675
 _semaf_var               bssCOMMON    0070
-_setup                   text1        0653
+_setup                   text1        0651
 btemp                    (abs)        007E
 end_of_initialization    cinit        07FC
 intlevel0                functab      0000
@@ -324,7 +324,7 @@ Total ram usage:        0 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 110 in file "main.c"
+		line 112 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -353,7 +353,7 @@ Total ram usage:        0 bytes
 
  *************** function _semaf *****************
  Defined at:
-		line 133 in file "main.c"
+		line 135 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -382,7 +382,7 @@ Total ram usage:        3 bytes
 
  *************** function _leds_2 *****************
  Defined at:
-		line 172 in file "main.c"
+		line 174 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -411,7 +411,7 @@ Total ram usage:        0 bytes
 
  *************** function _leds_1 *****************
  Defined at:
-		line 146 in file "main.c"
+		line 148 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -440,7 +440,7 @@ Total ram usage:        0 bytes
 
  *************** function _ganador_2 *****************
  Defined at:
-		line 205 in file "main.c"
+		line 207 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -469,7 +469,7 @@ Total ram usage:        0 bytes
 
  *************** function _ganador_1 *****************
  Defined at:
-		line 198 in file "main.c"
+		line 200 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -506,13 +506,13 @@ shared
 shared estimated size: 8
 
 main.c
-		_semaf         		CODE           	0677	0000	58
-		_leds_2        		CODE           	0711	0000	96
-		_ganador_1     		CODE           	063D	0000	11
-		_ganador_2     		CODE           	0648	0000	11
-		_main          		CODE           	0771	0000	131
-		_leds_1        		CODE           	06B1	0000	96
-		_setup         		CODE           	0653	0000	36
+		_semaf         		CODE           	0675	0000	58
+		_leds_2        		CODE           	070F	0000	96
+		_ganador_1     		CODE           	063B	0000	11
+		_ganador_2     		CODE           	0646	0000	11
+		_main          		CODE           	076F	0000	133
+		_leds_1        		CODE           	06AF	0000	96
+		_setup         		CODE           	0651	0000	36
 
-main.c estimated size: 439
+main.c estimated size: 441
 
