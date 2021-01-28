@@ -2515,6 +2515,7 @@ extern __bank0 __bit __timeout;
 int contador = 0;
 int contador2 = 0;
 int GO_var = 0;
+int semaf_var = 0;
 
 
 
@@ -2522,6 +2523,8 @@ void setup(void);
 void semaf(void);
 void leds_1(void);
 void leds_2(void);
+void ganador_1(void);
+void ganador_2(void);
 
 
 
@@ -2532,6 +2535,19 @@ void main(void) {
 
     while (1) {
         if (PORTAbits.RA0 == 0) {
+            PORTBbits.RB0 = 0;
+            PORTBbits.RB1 = 0;
+            contador = 0;
+            contador2 = 0;
+            GO_var = 0;
+            PORTC = 0b0000000;
+            PORTD = 0b0000000;
+
+            while (PORTAbits.RA0 == 0) {
+                    semaf_var = semaf_var;
+                    GO_var = 0;
+                }
+            semaf_var = 1;
             semaf();
         }
 
@@ -2541,18 +2557,24 @@ void main(void) {
                     contador = contador;
                 }
                 contador = contador + 1;
-                if (contador <= 9){
+                if (contador <= 8){
                     leds_1();
                 }
-
+                else{
+                  ganador_1();
+                }
             }
+
             if (PORTAbits.RA2 == 0) {
                 while (PORTAbits.RA2 == 0) {
                     contador2 = contador2;
                 }
                 contador2 = contador2 + 1;
-                if (contador2 <=9 ){
+                if (contador2 <=8 ){
                     leds_2();
+                }
+                else{
+                  ganador_2();
                 }
 
             }
@@ -2652,4 +2674,18 @@ void leds_2(void) {
     else if (contador2 == 8) {
         PORTD = 0b10000000;
     }
+}
+void ganador_1(void) {
+    PORTC = 0b00000000;
+    GO_var = 0;
+    PORTBbits.RB0 = 1;
+    contador = 0;
+    contador2 = 0;
+}
+void ganador_2(void) {
+    PORTD = 0b00000000;
+    GO_var = 0;
+    PORTBbits.RB1 = 1;
+    contador = 0;
+    contador2 = 0;
 }
