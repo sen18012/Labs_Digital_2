@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "oscilador.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 11 "main.c"
+# 1 "oscilador.c" 2
+# 1 "./oscilador.h" 1
+# 13 "./oscilador.h"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 11 "main.c" 2
+# 13 "./oscilador.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,11 +2624,6 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 12 "main.c" 2
-
-# 1 "./oscilador.h" 1
-# 14 "./oscilador.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 14 "./oscilador.h" 2
 
 
@@ -2636,122 +2632,42 @@ typedef uint16_t uintptr_t;
 
 
 void initOsc(uint8_t IRCF);
-# 13 "main.c" 2
+# 1 "oscilador.c" 2
 
 
+void initOsc(uint8_t IRCF) {
+    switch (IRCF) {
+        case 0:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
+            break;
+        case 1:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 1;
+            break;
+        case 2:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
+        case 6:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
+        case 7:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 1;
+            break;
+        default:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
 
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-int contador;
-unsigned int ADC_res;
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (INTCONbits.RBIF == 1) {
-        if (PORTBbits.RB0 == 1) {
-            while (PORTBbits.RB0 == 1){
-                contador = contador;
-            }
-            contador = contador + 1;
-        }
-        if (PORTBbits.RB1 == 1) {
-            while (PORTBbits.RB1 == 1){
-                contador = contador;
-            }
-            contador = contador - 1;
-        }
     }
-        INTCONbits.RBIF = 0;
-    if (PIR1bits.ADIF){
-        PIR1bits.ADIF = 0;
-        _delay((unsigned long)((2)*(4000000/4000.0)));
-        ADCON0bits.GO = 1;
-        while (ADCON0bits.GO !=0){
-            ADC_res = ADRESH;
-            PORTC = ADC_res;
-        }
-    }
-}
-
-
-
-
-
-void setup(void);
-void cont(void);
-
-
-
-
-
-
-void main(void) {
-    contador = 0;
-    setup();
-    ADCON1 = 0b00000000;
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 1;
-    while (1) {
-
-        contador = contador;
-    }
-
-}
-
-
-
-
-
-void setup(void) {
-
-    OSCCON = 0b01100001;
-    ANSEL = 0b00000100;
-    ANSELH = 0;
-    TRISC = 0;
-    PORTC = 0;
-    TRISD = 0;
-    PORTD = 0;
-    TRISE = 0;
-    PORTE = 0;
-    TRISB = 0b0000011;
-    PORTB = 0;
-    TRISA = 0b00000100;
-    PORTA = 0;
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    INTCONbits.PEIE = 1;
-    ADCON0 = 0b01001001;
-# 132 "main.c"
-}
-
-
-
-
-void cont(void) {
-
-    PORTC = contador;
+    OSCCONbits.SCS = 1;
 }
