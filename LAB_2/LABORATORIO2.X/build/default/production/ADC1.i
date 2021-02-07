@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "ADC1.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 11 "main.c"
+# 1 "ADC1.c" 2
+# 1 "./ADC1.h" 1
+# 13 "./ADC1.h"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 11 "main.c" 2
+# 13 "./ADC1.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,11 +2624,6 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 12 "main.c" 2
-
-# 1 "./ADC1.h" 1
-# 14 "./ADC1.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 14 "./ADC1.h" 2
 
 
@@ -2636,133 +2632,27 @@ typedef uint16_t uintptr_t;
 uint8_t ADC_val(uint8_t ADRESL_, uint8_t ADRESH_);
 uint8_t ADC_nib_1(uint8_t val_ADC);
 uint8_t ADC_nib_2(uint8_t val_ADC);
-# 13 "main.c" 2
+# 1 "ADC1.c" 2
 
 
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+uint8_t VALOR_ADC;
+uint8_t VALOR_SWAP;
+uint8_t VALOR_NIB1;
+uint8_t VALOR_NIB2;
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-uint8_t contador;
-uint8_t ADC_res;
-uint8_t NIB1_res;
-uint8_t NIB2_res;
-
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (INTCONbits.RBIF == 1) {
-        if (PORTBbits.RB0 == 1) {
-            while (PORTBbits.RB0 == 1) {
-                contador = contador;
-            }
-            contador = contador + 1;
-            PORTC = contador;
-        }
-        if (PORTBbits.RB1 == 1) {
-            while (PORTBbits.RB1 == 1) {
-                contador = contador;
-            }
-            contador = contador - 1;
-            PORTC = contador;
-        }
-    }
-    INTCONbits.RBIF = 0;
-
-    if (PIR1bits.ADIF == 1) {
-        PIR1bits.ADIF = 0;
-        _delay((unsigned long)((2)*(8000000/4000.0)));
-        ADCON0bits.GO = 1;
-        while (ADCON0bits.GO != 0) {
-            ADC_res = ADC_val(ADRESL, ADRESH);
-
-            NIB1_res = ADC_nib_1(ADC_res);
-            NIB2_res = ADC_nib_2(ADC_res);
-
-            PORTD = ADC_res;
-        }
-    }
+uint8_t ADC_val( uint8_t ADRESL_, uint8_t ADRESH_){
+    VALOR_ADC = ((ADRESL << 8) | ADRESH);
+    return VALOR_ADC;
 }
 
-
-
-
-void setup(void);
-void cont(void);
-
-
-
-
-
-void main(void) {
-    contador = 0;
-    setup();
-    while (1) {
-
-
-    }
-    return;
+uint8_t ADC_nib_1(uint8_t val_ADC_){
+    VALOR_NIB1 = (val_ADC_ & 15);
+    return VALOR_NIB1;
 }
 
-
-
-
-
-void setup(void) {
-    OSCCON = 0b01100001;
-    ANSEL = 0b00000100;
-    ANSELH = 0;
-    TRISC = 0;
-    PORTC = 0;
-    TRISD = 0;
-    PORTD = 0;
-    TRISE = 0;
-    PORTE = 0;
-    TRISB = 0b0000011;
-    PORTB = 0;
-    TRISA = 0b00000100;
-    PORTA = 0;
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    INTCONbits.PEIE = 1;
-    ADCON0 = 0b01001001;
-
-
-
-
-
-    ADCON1 = 0b00000000;
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 1;
-}
-
-
-
-
-
-void cont(void) {
-    PORTC = contador;
+uint8_t ADC_nib_2(uint8_t val_ADC_1){
+    VALOR_SWAP = (((val_ADC_1 & 0x0F)<<4) | ((val_ADC_1 & 0x0F)>>4));
+    VALOR_NIB2 = (VALOR_SWAP & 15);
+    return VALOR_NIB2;
 }

@@ -10,6 +10,7 @@
 //******************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "ADC1.h"
 
 // CONFIG1
 #pragma config FOSC = INTRC_NOCLKOUT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -33,11 +34,15 @@
 //Variables
 //******************************************************************************
 uint8_t contador;
+uint8_t ADC_res;
+uint8_t NIB1_res;
+uint8_t NIB2_res;
 
 
 //******************************************************************************
 //Interrupciones
 //******************************************************************************
+
 void __interrupt() ISR(void) {
     if (INTCONbits.RBIF == 1) { //se revisa que bandera se levantó
         if (PORTBbits.RB0 == 1) {
@@ -45,16 +50,31 @@ void __interrupt() ISR(void) {
                 contador = contador;
             }
             contador = contador + 1;
+            PORTC = contador;
         }
         if (PORTBbits.RB1 == 1) {
             while (PORTBbits.RB1 == 1) {
                 contador = contador;
             }
             contador = contador - 1;
+            PORTC = contador;
         }
     }
     INTCONbits.RBIF = 0;
-    
+
+    if (PIR1bits.ADIF == 1) {
+        PIR1bits.ADIF = 0; //bajamos manuelmente la bandera de interrup
+        __delay_ms(2);
+        ADCON0bits.GO = 1;
+        while (ADCON0bits.GO != 0) { //Revisa si la conversación ya finalizó
+            ADC_res = ADC_val(ADRESL, ADRESH);
+            //ADC_res = ((ADRESL << 8) | ADRESH);;
+            NIB1_res = ADC_nib_1(ADC_res);
+            NIB2_res = ADC_nib_2(ADC_res);
+//            Mostrar();
+            PORTD = ADC_res; //Prueba antes de multiplexado
+        }
+    }
 }
 
 //******************************************************************************
@@ -71,7 +91,8 @@ void main(void) {
     contador = 0;
     setup();
     while (1) {
-        cont();
+       
+        
     }
     return;
 }
@@ -79,6 +100,7 @@ void main(void) {
 //******************************************************************************
 //Configuracion
 //******************************************************************************
+
 void setup(void) {
     OSCCON = 0b01100001;
     ANSEL = 0b00000100;
@@ -98,6 +120,16 @@ void setup(void) {
     INTCONbits.RBIF = 0;
     IOCBbits.IOCB0 = 1;
     IOCBbits.IOCB1 = 1;
+    INTCONbits.PEIE = 1; //Enable interrupciones 
+    ADCON0 = 0b01001001; //Fosc/8   CH2   GoDone0  
+    //ADCON1 = 0b00000000;
+    //PIE1bits.ADIE = 1; //enable interrupcion ADC
+    //PIR1bits. ADIF = 0; //Clear flag
+    
+    
+    ADCON1 = 0b00000000;
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 1;
 }
 
 //******************************************************************************
