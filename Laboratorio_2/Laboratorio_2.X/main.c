@@ -11,6 +11,8 @@
 #include <xc.h>
 #include <stdint.h>
 #include "oscilador.h"
+#include "ADC.h"
+#include "Disp.h"
 
 // CONFIG1
 #pragma config FOSC = INTRC_NOCLKOUT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -33,9 +35,16 @@
 //******************************************************************************
 //Variables
 //****************************************************************************** 
-int contador;
-unsigned int ADC_res;
+uint8_t contador;
+uint8_t ADC_res;
+uint8_t NIB1_res;
+uint8_t NIB2_res;
+uint8_t timer_cont = 0;
+int FLAG;
 
+
+void Mostrar(void); //Muestra el valor en el display 
+void change(void); //cambia estado de bandera (Para multiplexar))
 //******************************************************************************
 //Interrupciones
 //****************************************************************************** 
@@ -43,27 +52,37 @@ unsigned int ADC_res;
 void __interrupt() ISR(void) {
     if (INTCONbits.RBIF == 1) { //se revisa que bandera se levantó
         if (PORTBbits.RB0 == 1) {
-            while (PORTBbits.RB0 == 1){
+            while (PORTBbits.RB0 == 1) {
                 contador = contador;
             }
             contador = contador + 1;
         }
         if (PORTBbits.RB1 == 1) {
-            while (PORTBbits.RB1 == 1){
+            while (PORTBbits.RB1 == 1) {
                 contador = contador;
-            }    
+            }
             contador = contador - 1;
         }
     }
-        INTCONbits.RBIF = 0;
-    if (PIR1bits.ADIF){
+    INTCONbits.RBIF = 0;
+
+    if (PIR1bits.ADIF == 1) {
         PIR1bits.ADIF = 0; //bajamos manuelmente la bandera de interrup
         __delay_ms(2);
         ADCON0bits.GO = 1;
-        while (ADCON0bits.GO !=0){ //Revisa si la conversación ya finalizó
-            ADC_res = ADRESH; //Se le asigna el valor de ADRESH a la variable
-            PORTC = ADC_res; //Prueba antes de multiplexado
+        while (ADCON0bits.GO != 0) { //Revisa si la conversación ya finalizó
+            ADC_res = ADC_val(ADRESL, ADRESH);
+            NIB1_res = ADC_nib_1(ADC_res);
+            NIB2_res = ADC_nib_2(ADC_res);
+            Mostrar();
+            //PORTC = ADC_res; //Prueba antes de multiplexado
         }
+    }
+    if (TMR0IF) {
+        TMR0IF = 0; //bajamos la bandera
+        TMR0 = 4;
+        timer_cont = timer_cont + 1;
+
     }
 }
 
@@ -72,7 +91,10 @@ void __interrupt() ISR(void) {
 //Prototipos de funciones
 //******************************************************************************
 void setup(void);
-void cont(void);
+void cont(void); //Mueve el el valor del contador al Puerto C
+void ADC(void); //Mueve el valor de cada Nibble a su respectivo 
+//void Mostrar(void); //Muestra el valor en el display 
+//void change(void); //cambia estado de bandera (Para multiplexar))
 
 
 //******************************************************************************
@@ -83,11 +105,18 @@ void main(void) {
     contador = 0;
     setup();
     ADCON1 = 0b00000000;
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 1;
+    PIE1bits.ADIE = 1; //enable interrupcion ADC
     while (1) {
-        //cont();
-        contador = contador;
+        cont();
+        ADC();
+        //contador = contador;
+
+        if (ADC_res > contador) {
+            PORTEbits.RE2 = 1;
+
+        } else if (ADC_res < contador) {
+            PORTEbits.RE2 = 0;
+        }
     }
 
 }
@@ -110,7 +139,7 @@ void setup(void) {
     TRISB = 0b0000011;
     PORTB = 0;
     TRISA = 0b00000100;
-    PORTA = 0;
+    PORTA = 0b00000011;
     INTCONbits.GIE = 1; //Interrup Globales
     INTCONbits.RBIE = 1; //Interrup On Change PORTB
     INTCONbits.RBIF = 0;
@@ -118,12 +147,16 @@ void setup(void) {
     IOCBbits.IOCB1 = 1;
     INTCONbits.PEIE = 1; //Enable interrupciones 
     ADCON0 = 0b01001001; //Fosc/8   CH2   GoDone0  ADON1
-    
+    TMR0 = 4; //Configuración TMR0 
+    OPTION_REG = 0b10000001;
+    INTCON = 0b10101001;
+    IOCB = 0b00000011;
 
-    
-    
-    
-    
+
+
+
+
+
 
 
 
@@ -139,7 +172,33 @@ void cont(void) {
     PORTC = contador;
 }
 
+void ADC(void) {
+    //PORTCbits.RC2 = 1;
+    PORTD = ADC_res;
+}
 
+void Mostrar(void) {
+    PORTE = 0;
+    if (FLAG == 0) {
+        disp_val(NIB1_res);
+        PORTEbits.RE1 = 1;
+    } 
+    else if (FLAG == 1) {
+        disp_val(NIB1_res);
+        PORTEbits.RE2 = 1;
+    
+    }
+}
+
+ void change(void) {
+        if (FLAG == 1) {
+            FLAG = 0;
+        }
+        else if (FLAG == 0) {
+            FLAG = 1;
+
+        }
+    }
 
 
 

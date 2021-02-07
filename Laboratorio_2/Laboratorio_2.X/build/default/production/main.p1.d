@@ -1,3 +1,5 @@
 build/default/production/main.p1:  \
 main.c  \
-oscilador.h 
+oscilador.h  \
+ADC.h  \
+Disp.h 
