@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "DISP7.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 11 "main.c"
+# 1 "DISP7.c" 2
+# 1 "./DISP7.h" 1
+# 13 "./DISP7.h"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 11 "main.c" 2
+# 13 "./DISP7.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,186 +2624,114 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 12 "main.c" 2
-
-# 1 "./ADC1.h" 1
-# 14 "./ADC1.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "./ADC1.h" 2
-
-
-
-
-uint8_t ADC_val(uint8_t ADRESL_, uint8_t ADRESH_);
-uint8_t ADC_nib_1(uint8_t val_ADC);
-uint8_t ADC_nib_2(uint8_t val_ADC);
-# 13 "main.c" 2
-
-# 1 "./DISP7.h" 1
-# 14 "./DISP7.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 14 "./DISP7.h" 2
 
 
 
 void DISPLAY7(uint8_t val);
-# 14 "main.c" 2
+# 1 "DISP7.c" 2
 
 
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-uint8_t contador;
-uint8_t ADC_res;
-uint8_t NIB1_res;
-uint8_t NIB2_res;
-uint8_t cont = 0;
-
-uint8_t FLAG = 0;
-
-void DISP(void);
-void MULTIPLEX(void);
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (INTCONbits.RBIF == 1) {
-        if (PORTBbits.RB0 == 1) {
-            while (PORTBbits.RB0 == 1) {
-                contador = contador;
-            }
-            contador = contador + 1;
-            PORTC = contador;
-        }
-        if (PORTBbits.RB1 == 1) {
-            while (PORTBbits.RB1 == 1) {
-                contador = contador;
-            }
-            contador = contador - 1;
-            PORTC = contador;
-        }
-    }
-    INTCONbits.RBIF = 0;
-
-    if (PIR1bits.ADIF) {
-        PIR1bits.ADIF = 0;
-        _delay((unsigned long)((2)*(8000000/4000.0)));
-        ADCON0bits.GO = 1;
-        while (ADCON0bits.GO != 0) {
-            ADC_res = ADC_val(ADRESL, ADRESH);
-            NIB1_res = ADC_nib_1(ADC_res);
-            NIB2_res = ADC_nib_2(ADC_res);
-
-            DISP();
-        }
-    }
-    if (TMR0IF) {
-        TMR0IF = 0;
-        TMR0 = 4;
-        cont++;
-    }
-
-}
-
-
-
-
-void setup(void);
-
-
-
-
-
-
-void main(void) {
-    contador = 0;
-    setup();
-    while (1) {
-
-        if (cont >= 1){
-            cont = 0;
-            MULTIPLEX();
-        }
-        if (ADC_res > contador){
-            PORTEbits.RE0 = 1;
-        }
-        else if (ADC_res < contador){
-            PORTEbits.RE0 = 0;
-        }
-    }
-    return;
-}
-
-
-
-
-
-void setup(void) {
-    OSCCON = 0b01100001;
-    ANSEL = 0b00000100;
-    ANSELH = 0;
-    TRISC = 0;
-    PORTC = 0;
+void DISPLAY7(uint8_t val) {
     TRISD = 0;
     PORTD = 0;
-    TRISE = 0;
-    PORTE = 0;
-    TRISB = 0b0000011;
-    PORTB = 0;
-    TRISA = 0b00000100;
-    PORTA = 0;
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    INTCONbits.PEIE = 1;
-    ADCON0 = 0b01001001;
-    ADCON1 = 0b00000000;
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 1;
-}
+    switch (val) {
+        case 0:
+            PORTD = 0x3F;
+            break;
+        case 1:
+            PORTD = 0x06;
+            break;
+        case 2:
+            PORTD = 0x5B;
+            break;
+        case 3:
+            PORTD = 0x4F;
+            break;
+        case 4:
+            PORTD = 0x66;
+            break;
+        case 5:
+            PORTD = 0x6D;
+            break;
+        case 6:
+            PORTD = 0x7D;
+            break;
+        case 7:
+            PORTD = 0x07;
+            break;
+        case 8:
+            PORTD = 0x7F;
+            break;
+        case 9:
+            PORTD = 0x6F;
+            break;
+        case 10:
+            PORTD = 0x77;
+            break;
+        case 11:
+            PORTD = 0x1F;
+            break;
+        case 12:
+            PORTD = 0x4E;
+            break;
+        case 13:
+            PORTD = 0x3D;
+            break;
+        case 14:
+            PORTD = 0x4F;
+            break;
+        case 15:
+            PORTD = 0x47;
+            break;
 
-
-
-
-void DISP(void) {
-    PORTE = 0;
-    if (FLAG == 0) {
-        DISPLAY7(NIB1_res);
-        PORTEbits.RE1 = 1;
-    } else if (FLAG == 1) {
-        DISPLAY7(NIB2_res);
-        PORTEbits.RE2 = 1;
-    }
-
-}
-
-void MULTIPLEX(void) {
-    if (FLAG == 1) {
-        FLAG = 0;
-    } else if (FLAG == 0) {
-        FLAG = 1;
-
+        case 128:
+            PORTD = 0x06;
+            break;
+        case 64:
+            PORTD = 0x5B;
+            break;
+        case 192:
+            PORTD = 0x4F;
+            break;
+        case 32:
+            PORTD = 0x66;
+            break;
+        case 160:
+            PORTD = 0x6D;
+            break;
+        case 96:
+            PORTD = 0x7D;
+            break;
+        case 224:
+            PORTD = 0x07;
+            break;
+        case 16:
+            PORTD = 0x7F;
+            break;
+        case 144:
+            PORTD = 0x6F;
+            break;
+        case 80:
+            PORTD = 0x77;
+            break;
+        case 208:
+            PORTD = 0x1F;
+            break;
+        case 48:
+            PORTD = 0x4E;
+            break;
+        case 176:
+            PORTD = 0x3D;
+            break;
+        case 112:
+            PORTD = 0x4F;
+            break;
+        case 240:
+            PORTD = 0x47;
+            break;
+        default:
+            PORTD = 0x3F;
+            break;
     }
 }

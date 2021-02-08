@@ -11,6 +11,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "ADC1.h"
+#include "DISP7.h"
 
 // CONFIG1
 #pragma config FOSC = INTRC_NOCLKOUT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -37,7 +38,12 @@ uint8_t contador;
 uint8_t ADC_res;
 uint8_t NIB1_res;
 uint8_t NIB2_res;
+uint8_t cont = 0;
 
+uint8_t FLAG = 0;
+
+void DISP(void);
+void MULTIPLEX(void);
 
 //******************************************************************************
 //Interrupciones
@@ -62,26 +68,31 @@ void __interrupt() ISR(void) {
     }
     INTCONbits.RBIF = 0;
 
-    if (PIR1bits.ADIF == 1) {
+    if (PIR1bits.ADIF) {
         PIR1bits.ADIF = 0; //bajamos manuelmente la bandera de interrup
         __delay_ms(2);
         ADCON0bits.GO = 1;
         while (ADCON0bits.GO != 0) { //Revisa si la conversación ya finalizó
             ADC_res = ADC_val(ADRESL, ADRESH);
-            //ADC_res = ((ADRESL << 8) | ADRESH);;
             NIB1_res = ADC_nib_1(ADC_res);
             NIB2_res = ADC_nib_2(ADC_res);
-//            Mostrar();
-            PORTD = ADC_res; //Prueba antes de multiplexado
+            //PORTD = ADC_res; //Prueba antes de multiplexado
+            DISP();
         }
     }
+    if (TMR0IF) { //Configuracion del timer 0 
+        TMR0IF = 0;
+        TMR0 = 4;
+        cont++;
+    }
+    
 }
 
 //******************************************************************************
 //Prototipos de funciones
 //******************************************************************************
 void setup(void);
-void cont(void); //Mueve el el valor del contador al Puerto C
+
 
 //******************************************************************************
 //Ciclo Principal
@@ -91,8 +102,17 @@ void main(void) {
     contador = 0;
     setup();
     while (1) {
-       
-        
+        //PIR1bits.ADIF = 1;
+        if (cont >= 1){
+            cont = 0;
+            MULTIPLEX();
+        }
+        if (ADC_res > contador){
+            PORTEbits.RE0 = 1;
+        }
+        else if (ADC_res < contador){
+            PORTEbits.RE0 = 0;
+        }
     }
     return;
 }
@@ -122,11 +142,6 @@ void setup(void) {
     IOCBbits.IOCB1 = 1;
     INTCONbits.PEIE = 1; //Enable interrupciones 
     ADCON0 = 0b01001001; //Fosc/8   CH2   GoDone0  
-    //ADCON1 = 0b00000000;
-    //PIE1bits.ADIE = 1; //enable interrupcion ADC
-    //PIR1bits. ADIF = 0; //Clear flag
-    
-    
     ADCON1 = 0b00000000;
     PIE1bits.ADIE = 1;
     PIR1bits.ADIF = 1;
@@ -135,7 +150,23 @@ void setup(void) {
 //******************************************************************************
 //Funciones
 //******************************************************************************
+void DISP(void) {
+    PORTE = 0;
+    if (FLAG == 0) {
+        DISPLAY7(NIB1_res);
+        PORTEbits.RE1 = 1;
+    } else if (FLAG == 1) {
+        DISPLAY7(NIB2_res);
+        PORTEbits.RE2 = 1;
+    }
 
-void cont(void) {
-    PORTC = contador;
+}
+
+void MULTIPLEX(void) {
+    if (FLAG == 1) {
+        FLAG = 0;
+    } else if (FLAG == 0) {
+        FLAG = 1;
+
+    }
 }
