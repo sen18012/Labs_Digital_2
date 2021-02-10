@@ -179,8 +179,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1718: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x08C)));
 [v _PIE1bits `VS62 ~T0 @X0 0 e@140 ]
 "17 ./DISP7.h
-[; ;./DISP7.h: 17: void DISPLAY7(uint8_t val);
-[v _DISPLAY7 `(v ~T0 @X0 0 ef1`uc ]
+[; ;./DISP7.h: 17: uint8_t DISPLAY7(uint8_t val);
+[v _DISPLAY7 `(uc ~T0 @X0 0 ef1`uc ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -487,7 +487,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 139  ]
 {
 "54
-[; ;main.c: 54:         cont++;
+[; ;main.c: 54:         cont = cont +1;
 [e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 140  ]
 {
 "55
@@ -607,7 +607,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _TMR0 -> -> 4 `i `uc ]
 "86
 [; ;main.c: 86: }
-[e ++ _cont -> -> 1 `i `uc ]
+[e = _cont -> + -> _cont `i -> 1 `i `uc ]
 "87
 [; ;main.c: 87: 
 }
@@ -685,7 +685,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 153 ]
 }
 "124
-[; ;main.c: 124:         DISPLAY7(NIB1_res);
+[; ;main.c: 124:         PORTD = DISPLAY7(NIB1_res);
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
@@ -697,7 +697,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 126:     } else if (FLAG == 1) {
 [e = _ANSEL -> -> 4 `i `uc ]
 "127
-[; ;main.c: 127:         DISPLAY7(NIB2_res);
+[; ;main.c: 127:         PORTD = DISPLAY7(NIB2_res);
 [e = _ANSELH -> -> 0 `i `uc ]
 "128
 [; ;main.c: 128:         PORTEbits.RE2 = 1;
@@ -766,7 +766,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _FLAG `i -> 0 `i 163  ]
 {
 "156
-[e ( _DISPLAY7 (1 _NIB1_res ]
+[e = _PORTD ( _DISPLAY7 (1 _NIB1_res ]
 "157
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
 "158
@@ -776,7 +776,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _FLAG `i -> 1 `i 165  ]
 {
 "159
-[e ( _DISPLAY7 (1 _NIB2_res ]
+[e = _PORTD ( _DISPLAY7 (1 _NIB2_res ]
 "160
 [e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
 "161

@@ -14,7 +14,7 @@
 #include <stdint.h>
 
 
-void DISPLAY7(uint8_t val);
+uint8_t DISPLAY7(uint8_t val);
 
 
 

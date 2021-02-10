@@ -18,7 +18,7 @@
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "3 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\LAB_2\LABORATORIO2.X\DISP7.c
-[v _DISPLAY7 DISPLAY7 `(v  1 e 1 0 ]
+[v _DISPLAY7 DISPLAY7 `(uc  1 e 1 0 ]
 "52 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\LAB_2\LABORATORIO2.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 "101
@@ -209,7 +209,7 @@
 "163
 } 0
 "3 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\LAB_2\LABORATORIO2.X\DISP7.c
-[v _DISPLAY7 DISPLAY7 `(v  1 e 1 0 ]
+[v _DISPLAY7 DISPLAY7 `(uc  1 e 1 0 ]
 {
 [v DISPLAY7@val val `uc  1 a 1 wreg ]
 [v DISPLAY7@val val `uc  1 a 1 wreg ]

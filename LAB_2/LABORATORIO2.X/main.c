@@ -83,7 +83,7 @@ void __interrupt() ISR(void) {
     if (TMR0IF) { //Configuracion del timer 0 
         TMR0IF = 0;
         TMR0 = 4;
-        cont++;
+        cont = cont +1;
     }
     
 }
@@ -153,10 +153,10 @@ void setup(void) {
 void DISP(void) {
     PORTE = 0;
     if (FLAG == 0) {
-        DISPLAY7(NIB1_res);
+        PORTD = DISPLAY7(NIB1_res);
         PORTEbits.RE1 = 1;
     } else if (FLAG == 1) {
-        DISPLAY7(NIB2_res);
+        PORTD = DISPLAY7(NIB2_res);
         PORTEbits.RE2 = 1;
     }
 

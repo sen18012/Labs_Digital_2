@@ -240,8 +240,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "3 DISP7.c
-[; ;DISP7.c: 3: void DISPLAY7(uint8_t val) {
-[v _DISPLAY7 `(v ~T0 @X0 1 ef1`uc ]
+[; ;DISP7.c: 3: uint8_t DISPLAY7(uint8_t val) {
+[v _DISPLAY7 `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _DISPLAY7 ]
 [v _val `uc ~T0 @X0 1 r1 ]

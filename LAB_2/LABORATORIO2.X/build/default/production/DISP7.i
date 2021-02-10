@@ -2628,11 +2628,11 @@ typedef uint16_t uintptr_t;
 
 
 
-void DISPLAY7(uint8_t val);
+uint8_t DISPLAY7(uint8_t val);
 # 1 "DISP7.c" 2
 
 
-void DISPLAY7(uint8_t val) {
+uint8_t DISPLAY7(uint8_t val) {
     TRISD = 0;
     PORTD = 0;
     switch (val) {

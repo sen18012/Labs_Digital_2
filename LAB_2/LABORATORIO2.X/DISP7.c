@@ -1,6 +1,6 @@
 #include "DISP7.h"
 
-void DISPLAY7(uint8_t val) {
+uint8_t DISPLAY7(uint8_t val) {
     TRISD = 0;
     PORTD = 0;
     switch (val) {
