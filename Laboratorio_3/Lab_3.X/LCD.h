@@ -35,6 +35,19 @@
 #ifndef __LCD_H_
 #define	__LCD_H_
 
+
+#define _XTAL_FREQ 8000000
+#define RS RE0
+#define EN RE1
+#define D0 RD0
+#define D1 RD1
+#define D2 RD2
+#define D3 RD3
+#define D4 RD4
+#define D5 RD5
+#define D6 RD6
+#define D7 RD7
+
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 8000000
 #endif
@@ -43,9 +56,9 @@
 #define RS RE0
 #endif
 
-#ifndef RW
-#define RW RE1
-#endif
+//#ifndef RW
+//#define RW RE1
+//#endif
 
 #ifndef EN
 #define EN RE2
