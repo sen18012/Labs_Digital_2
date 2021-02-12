@@ -10,7 +10,11 @@
 //******************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic16f887.h>
 #include "LCD.h"
+#include "ADC.h"
 
 // CONFIG1
 #pragma config FOSC = HS        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -31,7 +35,6 @@
 //******************************************************************************
 //Variables
 //******************************************************************************
-
 #define _XTAL_FREQ 8000000
 #define RS RE0
 #define EN RE1
@@ -44,55 +47,71 @@
 #define D6 RD6
 #define D7 RD7
 
+uint8_t ADC_res1;
+uint8_t ADC_res2;
+char data[16];
+float VAL1;
+float VAL2;
+
+//******************************************************************************
+//Interrupciones
+//****************************************************************************** 
+
+//void __interrupt() ISR(void) { 
+//   if (PIR1bits.ADIF == 1) {
+//        PIR1bits.ADIF = 0; //bajamos manuelmente la bandera de interrup
+//        __delay_ms(2);
+//        ADCON0bits.ADON = 1; // Enable ADC
+//        __delay_us(40); // Time to charge the cap
+//        ADCON0bits.GO_nDONE = 1; // Enable convertion
+////        ADCON0bits.GO_nDONE = 1;
+//        while (ADCON0bits.GO != 0) { //Revisa si la conversación ya finalizó
+//            ADC_res = ADC_val(ADRESL, ADRESH);
+//            PORTB = ADC_res;
+//            //PORTC = ADC_res; //Prueba antes de multiplexado
+//        }
+////        PIE1bits.ADIE = 1; //enable interrupcion ADC
+//        
+//
+//    }
+// 
+//}
+
+
 
 //******************************************************************************
 //Prototipos de funciones
 //******************************************************************************
 void setup (void);
+void ADC_VALOR (void);
+void ADC_CH0 (void);
+void ADC_CH1 (void);
 
 //******************************************************************************
 //Ciclo Principal
 //******************************************************************************
 void main(void) {
   setup ();
-  unsigned int a;
+//  unsigned int a;
   TRISD = 0x00;
   Lcd_Init();
-  while(1)
-  {
-    Lcd_Clear();
+  
+     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
     Lcd_Write_String("S1:");
-    Lcd_Set_Cursor(1,5);
+    Lcd_Set_Cursor(1,7);
     Lcd_Write_String("S2:");
-    __delay_ms(2000);
-//    Lcd_Clear();
-//    Lcd_Set_Cursor(1,1);
-//    Lcd_Write_String("Developed By");
-//    Lcd_Set_Cursor(2,1);
-//    Lcd_Write_String("electroSome");
-//    __delay_ms(2000);
-//    Lcd_Clear();
-//    Lcd_Set_Cursor(1,1);
-//    Lcd_Write_String("www.electroSome.com");
-//
-//    for(a=0;a<15;a++)
-//    {
-//        __delay_ms(300);
-//        Lcd_Shift_Left();
-//    }
-//
-//    for(a=0;a<15;a++)
-//    {
-//        __delay_ms(300);
-//        Lcd_Shift_Right();
-//    }
-//
-//    Lcd_Clear();
-//    Lcd_Set_Cursor(2,1);
-//    Lcd_Write_Char('e');
-//    Lcd_Write_Char('S');
-//    __delay_ms(2000);
+    Lcd_Set_Cursor(1,14);
+    Lcd_Write_String("S3:");
+  while(1)
+  {
+    ADC_CH0();
+    ADC_CH1();
+
+    sprintf(data, "%1.2fV " "%1.2fV", VAL1, VAL2);
+    Lcd_Set_Cursor(2, 1); 
+    Lcd_Write_String(data);
+    
   }
     return;
 }
@@ -101,7 +120,7 @@ void main(void) {
 //Funciones
 //******************************************************************************
 void setup (void){
-    ANSEL = 0b00000011;
+    ANSEL = 0b00000011; //IO CONFIG
     ANSELH = 0;
     TRISA = 0b00000011;
     TRISB = 0;
@@ -113,7 +132,42 @@ void setup (void){
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
- 
+//ADC CONFIG
+    ADCON1 = 0b00000000;//Justificado a la izquierda
+    PIE1bits.ADIE = 0;
+    PIR1bits.ADIF = 0;
+    OPTION_REG = 0b00000000;
+    INTCON = 0b00000000;
+
     
     
+}
+
+void ADC_CH0(void){
+    ADC_ch(0); //channel 0
+    //Cinfiguracion bits ADCON0
+    ADCON0bits.ADCS0 = 1;//Clock ADC conversion
+    ADCON0bits.ADCS1 = 0;//Fosc
+    ADCON0bits.ADON = 1;//Se habilita el ADC
+    __delay_us(40);//Para conversion
+    ADCON0bits.GO = 1;  //Inicia la conversión
+    while(ADCON0bits.GO != 0){ //Waiting for conversion to complete
+        ADC_res1 = ADC_val(ADRESL, ADRESH);
+        VAL1 = ((ADC_res1 * 5.0)/255);
+
+    }
+}
+
+void ADC_CH1(void){
+    ADC_ch(1); //channel 1
+    ADCON0bits.ADCS0 = 1;//Clock ADC conversion
+    ADCON0bits.ADCS1 = 0;//Fosc
+    ADCON0bits.ADON = 1;//Se habilita el ADC
+    __delay_us(40);//Para conversion
+    ADCON0bits.GO = 1;  //Inicia la conversión
+    while(ADCON0bits.GO != 0){ //Waiting for conversion to complete
+        ADC_res2 = ADC_val(ADRESL, ADRESH);
+        VAL2 = ((ADC_res2 * 5.0)/255);
+
+    }
 }
