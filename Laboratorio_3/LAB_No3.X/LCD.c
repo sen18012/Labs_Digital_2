@@ -17,45 +17,7 @@
 void Lcd_Port(char a)
 {
     PORTD = a;
-//	if(a & 1)
-//		D0 = 1;
-//	else
-//		D0 = 0;
-//
-//	if(a & 2)
-//		D1 = 1;
-//	else
-//		D1 = 0;
-//
-//	if(a & 4)
-//		D2 = 1;
-//	else
-//		D2 = 0;
-//
-//	if(a & 8)
-//		D3 = 1;
-//	else
-//		D3 = 0;
-//    
-//    if(a & 16)
-//		D4 = 1;
-//	else
-//		D4 = 0;
-//    
-//    if(a & 32)
-//		D5 = 1;
-//	else
-//		D5 = 0;
-//    
-//     if(a & 64)
-//		D6 = 1;
-//	else
-//		D6 = 0;
-//    
-//     if(a & 128)
-//		D7 = 1;
-//	else
-//		D7 = 0;
+
 }
 void Lcd_Cmd(char a)
 {

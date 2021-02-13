@@ -10,7 +10,7 @@ unsigned short channel;
 
 
 uint8_t ADC_val(uint8_t ADRES_L, uint8_t ADRES_H){
-    VALOR_ADC = ((ADRESL << 8) | ADRESH);
+    VALOR_ADC = ((ADRESL << 8) | ADRESH); //se obtienen los 8 bits
 
     return VALOR_ADC;
 }

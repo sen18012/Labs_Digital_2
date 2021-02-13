@@ -1,7 +1,7 @@
 //
 ///* 
 // * File:LCD   
-// * Author:KATHA
+// * Author:KATHA SENN
 // * Comments:
 // * Revision history: 
 // */

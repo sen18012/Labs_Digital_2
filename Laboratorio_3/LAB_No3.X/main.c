@@ -2,7 +2,7 @@
  * File:   main.c
  * Author: katha
  *
- * Created on 7 de febrero de 2021, 02:03 PM
+ * Created on 8 de febrero de 2021, 10:53 AM
  */
 
 //******************************************************************************
@@ -65,13 +65,13 @@ int VAL2;
 void __interrupt() ISR(void){        
     if (RCIF == 1) {
         USART_LEER = RCREG;
-        if (USART_LEER == '+') {
-            cont = cont + 1;
+        if (USART_LEER == '+') { //comparar lo ingresado a la terminal con '+'
+            cont = cont + 1; //aumentar contador
             }
-        else if (USART_LEER == '-') {
-            cont = cont - 1;
+        else if (USART_LEER == '-') {//comparar lo ingresado a la terminal con '-'
+            cont = cont - 1; //decrementar contador
         }
-        USART_LEER = 0;
+        USART_LEER = 0; //regresamos a 0 para que no siga realizando la función ni se sobre escriba
     }
 }
 //******************************************************************************
@@ -92,28 +92,28 @@ void main(void) {
     setup();
     //  unsigned int a;
     TRISD = 0x00;
-    Lcd_Init();
+    Lcd_Init(); //Inicializar LCD
     Lcd_Clear();
-    Lcd_Set_Cursor(1, 1);
-    Lcd_Write_String("S1:");
+    Lcd_Set_Cursor(1, 1); //Elegimos localidad para escribir
+    Lcd_Write_String("S1:"); //Escribimos texto en LCD
     Lcd_Set_Cursor(1, 7);
     Lcd_Write_String("S2:");
     Lcd_Set_Cursor(1, 14);
     Lcd_Write_String("S3:");
     while (1) {
-        ADC_CH0();
-        ADC_CH1();
+        ADC_CH0();  //Leemos AN0 sensor 1
+        ADC_CH1();  //Leemos AN1 sensor 2
 
 
         
-        sprintf(data1, "%dV   %dV   %d", VAL1, VAL2, cont); //VALORES SE PASAN A CHAR PARA QUE LOS LEA LA TERMINAL VIRTUAL
-        USART_STRING(data1); //enviar el string con los valores a la pc
-        USART_ESCRITURA(13); //13 y 10 la secuencia es para dar un salto de linea 
+        sprintf(data1, "%dV   %dV   %d", VAL1, VAL2, cont); //volvemos los valores un char para enviarlo a la terminal
+        USART_STRING(data1); //enviamos el string con la info
+        USART_ESCRITURA(13); //Salto de linea en la terminal, para que se entienda mejor
         USART_ESCRITURA(10);
 
-        sprintf(data2, "%dV   %dV    %d", VAL1, VAL2, cont);
-        Lcd_Set_Cursor(2, 1);
-        Lcd_Write_String(data2);
+        sprintf(data2, "%dV   %dV    %d", VAL1, VAL2, cont); //volvemos los valores un char para enviar un solo dato a la LCD
+        Lcd_Set_Cursor(2, 1); //Elegimos posición del texto en la LCD
+        Lcd_Write_String(data2); //Enviamos los datos a la LCD
 
 
 
@@ -138,7 +138,7 @@ void setup(void) {
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-    TRISC7 = 1;
+    TRISC7 = 1; //Como en el data sheet
     //ADC 
     ADCON1 = 0b00000000; //Justificado a la izquierda
     PIE1bits.ADIE = 0;
@@ -149,22 +149,16 @@ void setup(void) {
     //INTERRUPCION
     INTCONbits.PEIE = 1;
     PIE1bits.RCIE = 1;
-//    PIR1bits.RCIF = 1;
     INTCONbits.GIE = 1;
 
     // USART CONFIG
     SPBRGH = 0;
     SPBRG = 12; //BAUD RATE DE 9600 A 8MHz
-    
-//    TXSTAbits.CSRC = 0;
-//    TXSTAbits.TX9 = 0; //8 bits
+
     TXSTAbits.TXEN = 1; //ENABLE
     TXSTAbits.SYNC = 0; // ASYNC
-//    TXSTAbits.BRGH = 0; //LOW SPEED
-//    TXSTAbits.TRMT = 0;
 
     RCSTAbits.SPEN = 1; // ENABLE
-//    RCSTAbits.RX9 = 0; //8 bits
     RCSTAbits.CREN = 1;
     RCREG = 0;
 
@@ -174,13 +168,12 @@ void setup(void) {
 
 void ADC_CH0(void) {
     ADC_ch(0); //channel 0
-    //Cinfiguracion bits ADCON0
-    ADCON0bits.ADCS0 = 1; //Clock ADC conversion
-    ADCON0bits.ADCS1 = 0; //Fosc
-    ADCON0bits.ADON = 1; //Se habilita el ADC
-    __delay_us(40); //Para conversion
-    ADCON0bits.GO = 1; //Inicia la conversión
-    while (ADCON0bits.GO != 0) { //Waiting for conversion to complete
+    ADCON0bits.ADCS0 = 1; // 
+    ADCON0bits.ADCS1 = 0; //Fosc/8
+    ADCON0bits.ADON = 1; //enable ADC
+    __delay_us(40); 
+    ADCON0bits.GO = 1; //iniciamos conversión
+    while (ADCON0bits.GO != 0) { //revisamos si ya se finalizó la conversión
         ADC_res1 = ADC_val(ADRESL, ADRESH);
         VAL1 = ((ADC_res1 * 50) / 255);
 
@@ -189,12 +182,12 @@ void ADC_CH0(void) {
 
 void ADC_CH1(void) {
     ADC_ch(1); //channel 1
-    ADCON0bits.ADCS0 = 1; //Clock ADC conversion
-    ADCON0bits.ADCS1 = 0; //Fosc
-    ADCON0bits.ADON = 1; //Se habilita el ADC
-    __delay_us(40); //Para conversion
-    ADCON0bits.GO = 1; //Inicia la conversión
-    while (ADCON0bits.GO != 0) { //Waiting for conversion to complete
+    ADCON0bits.ADCS0 = 1; 
+    ADCON0bits.ADCS1 = 0; //Fosc/8
+    ADCON0bits.ADON = 1; //enable ADC
+    __delay_us(40); 
+    ADCON0bits.GO = 1; //iniciamos conversión
+    while (ADCON0bits.GO != 0) { //revisamos si ya se finalizó la conversión
         ADC_res2 = ADC_val(ADRESL, ADRESH);
         VAL2 = ((ADC_res2 * 50) / 255);
 
