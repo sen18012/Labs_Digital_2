@@ -49,33 +49,31 @@
 
 uint8_t ADC_res1;
 uint8_t ADC_res2;
+uint8_t cont = 0;
 char data[16];
+char USART_LEER;
 float VAL1;
 float VAL2;
+
+
 
 //******************************************************************************
 //Interrupciones
 //****************************************************************************** 
 
-//void __interrupt() ISR(void) { 
-//   if (PIR1bits.ADIF == 1) {
-//        PIR1bits.ADIF = 0; //bajamos manuelmente la bandera de interrup
-//        __delay_ms(2);
-//        ADCON0bits.ADON = 1; // Enable ADC
-//        __delay_us(40); // Time to charge the cap
-//        ADCON0bits.GO_nDONE = 1; // Enable convertion
-////        ADCON0bits.GO_nDONE = 1;
-//        while (ADCON0bits.GO != 0) { //Revisa si la conversación ya finalizó
-//            ADC_res = ADC_val(ADRESL, ADRESH);
-//            PORTB = ADC_res;
-//            //PORTC = ADC_res; //Prueba antes de multiplexado
-//        }
-////        PIE1bits.ADIE = 1; //enable interrupcion ADC
-//        
-//
-//    }
-// 
-//}
+void __interrupt() ISR(void) { 
+    if(RCIF == 1){//Si se levanta la bandera del UART
+        RCIF = 0;//apaga la bandera del UART
+        USART_LEER = USART_LECTURA();  //guardar el valor recibido
+        if(USART_LEER == '+'){
+            cont = cont + 1;
+        } 
+        else if(USART_LEER == '-'){
+            cont = cont - 1;
+        }
+    }
+ 
+}
 
 
 
@@ -86,6 +84,8 @@ void setup (void);
 void ADC_VALOR (void);
 void ADC_CH0 (void);
 void ADC_CH1 (void);
+void COM1 (void);
+void COM2 (void);
 
 //******************************************************************************
 //Ciclo Principal
@@ -112,6 +112,8 @@ void main(void) {
     Lcd_Set_Cursor(2, 1); 
     Lcd_Write_String(data);
     
+//    COM1();
+    
   }
     return;
 }
@@ -124,20 +126,35 @@ void setup (void){
     ANSELH = 0;
     TRISA = 0b00000011;
     TRISB = 0;
-    TRISC = 0;
+//    TRISC = 0;
     TRISD = 0;
     TRISE = 0;
     PORTA = 0;
     PORTB = 0;
-    PORTC = 0;
+//    PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-//ADC CONFIG
+//ADC 
     ADCON1 = 0b00000000;//Justificado a la izquierda
     PIE1bits.ADIE = 0;
     PIR1bits.ADIF = 0;
     OPTION_REG = 0b00000000;
     INTCON = 0b00000000;
+// USART CONFIG
+    SPBRG = 12; //BAUD RATE DE 9600 A 8MHz
+    TXSTAbits.CSRC = 0;
+    TXSTAbits.TX9 = 0; //8 bits
+    TXSTAbits.TXEN = 1; //ENABLE
+    TXSTAbits.SYNC = 0; // ASYNC
+    TXSTAbits.BRGH = 0; //LOW SPEED
+    TXSTAbits.TRMT = 0;
+    
+    RCSTAbits.SPEN = 1; // ENABLE
+    RCSTAbits.RX9 = 0; //8 bits
+    RCSTAbits.CREN = 1; 
+
+    
+    
 
     
     
@@ -169,5 +186,13 @@ void ADC_CH1(void){
         ADC_res2 = ADC_val(ADRESL, ADRESH);
         VAL2 = ((ADC_res2 * 5.0)/255);
 
+    }
+}
+
+void COM1(void){
+    TXREG = VAL1;
+    while (TXSTAbits.TRMT == 1) { //retornaba y enviaba el voltaje del ADC2
+
+        return;
     }
 }

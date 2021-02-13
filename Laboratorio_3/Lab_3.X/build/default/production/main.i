@@ -2863,14 +2863,43 @@ unsigned ADC_ch(unsigned short channel);
 # 50 "main.c"
 uint8_t ADC_res1;
 uint8_t ADC_res2;
+uint8_t cont = 0;
 char data[16];
+char USART_LEER;
 float VAL1;
 float VAL2;
-# 85 "main.c"
+
+
+
+
+
+
+
+void __attribute__((picinterrupt(("")))) ISR(void) {
+    if(RCIF == 1){
+        RCIF = 0;
+        USART_LEER = USART_LECTURA();
+        if(USART_LEER == '+'){
+            cont = cont + 1;
+        }
+        else if(USART_LEER == '-'){
+            cont = cont - 1;
+        }
+    }
+
+}
+
+
+
+
+
+
 void setup (void);
 void ADC_VALOR (void);
 void ADC_CH0 (void);
 void ADC_CH1 (void);
+void COM1 (void);
+void COM2 (void);
 
 
 
@@ -2888,10 +2917,6 @@ void main(void) {
     Lcd_Write_String("S2:");
     Lcd_Set_Cursor(1,14);
     Lcd_Write_String("S3:");
-
-
-
-
   while(1)
   {
     ADC_CH0();
@@ -2900,6 +2925,8 @@ void main(void) {
     sprintf(data, "%1.2fV " "%1.2fV", VAL1, VAL2);
     Lcd_Set_Cursor(2, 1);
     Lcd_Write_String(data);
+
+
 
   }
     return;
@@ -2913,12 +2940,12 @@ void setup (void){
     ANSELH = 0;
     TRISA = 0b00000011;
     TRISB = 0;
-    TRISC = 0;
+
     TRISD = 0;
     TRISE = 0;
     PORTA = 0;
     PORTB = 0;
-    PORTC = 0;
+
     PORTD = 0;
     PORTE = 0;
 
@@ -2927,6 +2954,21 @@ void setup (void){
     PIR1bits.ADIF = 0;
     OPTION_REG = 0b00000000;
     INTCON = 0b00000000;
+
+    SPBRG = 12;
+    TXSTAbits.CSRC = 0;
+    TXSTAbits.TX9 = 0;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 0;
+    TXSTAbits.TRMT = 0;
+
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.CREN = 1;
+
+
+
 
 
 
@@ -2958,5 +3000,13 @@ void ADC_CH1(void){
         ADC_res2 = ADC_val(ADRESL, ADRESH);
         VAL2 = ((ADC_res2 * 5.0)/255);
 
+    }
+}
+
+void COM1(void){
+    TXREG = VAL1;
+    while (TXSTAbits.TRMT == 1) {
+
+        return;
     }
 }
