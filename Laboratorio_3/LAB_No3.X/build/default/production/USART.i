@@ -2638,7 +2638,13 @@ void USART_STRING(char *a);
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 3 "USART.c" 2
-# 28 "USART.c"
+# 29 "USART.c"
+uint8_t USART_LECTURA(){
+  while(!RCIF);
+  return RCREG;
+}
+
+
 void USART_ESCRITURA(uint8_t a){
     while(!TRMT);
     TXREG = a;
@@ -2648,8 +2654,4 @@ void USART_STRING(char *a){
     for(i=0;a[i]!='\0';i++){
         USART_ESCRITURA(a[i]);
     }
-}
-uint8_t USART_LECTURA(){
-  while(!RCIF);
-  return RCREG;
 }

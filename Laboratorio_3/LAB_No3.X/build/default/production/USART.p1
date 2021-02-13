@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"4508 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4508: extern volatile __bit TRMT __attribute__((address(0x4C1)));
-[v _TRMT `Vb ~T0 @X0 0 e@1217 ]
-"1133
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
-[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
-"4175
+"4175 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4175: extern volatile __bit RCIF __attribute__((address(0x65)));
 [v _RCIF `Vb ~T0 @X0 0 e@101 ]
 "1140
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
 [v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"4508
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4508: extern volatile __bit TRMT __attribute__((address(0x4C1)));
+[v _TRMT `Vb ~T0 @X0 0 e@1217 ]
+"1133
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -245,77 +245,77 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"28 USART.c
-[; ;USART.c: 28: void USART_ESCRITURA(uint8_t a){
+"29 USART.c
+[; ;USART.c: 29: uint8_t USART_LECTURA(){
+[v _USART_LECTURA `(uc ~T0 @X0 1 ef ]
+{
+[e :U _USART_LECTURA ]
+[f ]
+"30
+[; ;USART.c: 30:   while(!RCIF);
+[e $U 139  ]
+[e :U 140 ]
+[e :U 139 ]
+[e $ ! _RCIF 140  ]
+[e :U 141 ]
+"31
+[; ;USART.c: 31:   return RCREG;
+[e ) _RCREG ]
+[e $UE 138  ]
+"32
+[; ;USART.c: 32: }
+[e :UE 138 ]
+}
+"35
+[; ;USART.c: 35: void USART_ESCRITURA(uint8_t a){
 [v _USART_ESCRITURA `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _USART_ESCRITURA ]
 [v _a `uc ~T0 @X0 1 r1 ]
 [f ]
-"29
-[; ;USART.c: 29:     while(!TRMT);
-[e $U 139  ]
-[e :U 140 ]
-[e :U 139 ]
-[e $ ! _TRMT 140  ]
-[e :U 141 ]
-"30
-[; ;USART.c: 30:     TXREG = a;
+"36
+[; ;USART.c: 36:     while(!TRMT);
+[e $U 143  ]
+[e :U 144 ]
+[e :U 143 ]
+[e $ ! _TRMT 144  ]
+[e :U 145 ]
+"37
+[; ;USART.c: 37:     TXREG = a;
 [e = _TXREG _a ]
-"31
-[; ;USART.c: 31: }
-[e :UE 138 ]
+"38
+[; ;USART.c: 38: }
+[e :UE 142 ]
 }
-"32
-[; ;USART.c: 32: void USART_STRING(char *a){
+"39
+[; ;USART.c: 39: void USART_STRING(char *a){
 [v _USART_STRING `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _USART_STRING ]
 [v _a `*uc ~T0 @X0 1 r1 ]
 [f ]
-"33
-[; ;USART.c: 33:     uint8_t i;
+"40
+[; ;USART.c: 40:     uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"34
-[; ;USART.c: 34:     for(i=0;a[i]!='\0';i++){
+"41
+[; ;USART.c: 41:     for(i=0;a[i]!='\0';i++){
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 146  ]
-[e :U 143 ]
+[e $U 150  ]
+[e :U 147 ]
 {
-"35
-[; ;USART.c: 35:         USART_ESCRITURA(a[i]);
+"42
+[; ;USART.c: 42:         USART_ESCRITURA(a[i]);
 [e ( _USART_ESCRITURA (1 -> *U + _a * -> _i `ux -> -> # *U _a `ui `ux `uc ]
-"36
-[; ;USART.c: 36:     }
+"43
+[; ;USART.c: 43:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 146 ]
-[e $ != -> *U + _a * -> _i `ux -> -> # *U _a `ui `ux `ui -> 0 `ui 143  ]
-[e :U 144 ]
-}
-"37
-[; ;USART.c: 37: }
-[e :UE 142 ]
-}
-"38
-[; ;USART.c: 38: uint8_t USART_LECTURA(){
-[v _USART_LECTURA `(uc ~T0 @X0 1 ef ]
-{
-[e :U _USART_LECTURA ]
-[f ]
-"39
-[; ;USART.c: 39:   while(!RCIF);
-[e $U 148  ]
-[e :U 149 ]
-[e :U 148 ]
-[e $ ! _RCIF 149  ]
 [e :U 150 ]
-"40
-[; ;USART.c: 40:   return RCREG;
-[e ) _RCREG ]
-[e $UE 147  ]
-"41
-[; ;USART.c: 41: }
-[e :UE 147 ]
+[e $ != -> *U + _a * -> _i `ux -> -> # *U _a `ui `ux `ui -> 0 `ui 147  ]
+[e :U 148 ]
+}
+"44
+[; ;USART.c: 44: }
+[e :UE 146 ]
 }

@@ -62,23 +62,18 @@ int VAL2;
 //******************************************************************************
 //Interrupciones
 //****************************************************************************** 
-
-void __interrupt() ISR(void) {
-    if (RCIF == 1) {//Si se levanta la bandera del UART
-        RCIF = 0; //apaga la bandera del UART
-        USART_LEER = USART_LECTURA(); //guardar el valor recibido
+void __interrupt() ISR(void){        
+    if (RCIF == 1) {
+        USART_LEER = RCREG;
         if (USART_LEER == '+') {
             cont = cont + 1;
-        }
+            }
         else if (USART_LEER == '-') {
             cont = cont - 1;
         }
+        USART_LEER = 0;
     }
-
 }
-
-
-
 //******************************************************************************
 //Prototipos de funciones
 //******************************************************************************
@@ -98,7 +93,6 @@ void main(void) {
     //  unsigned int a;
     TRISD = 0x00;
     Lcd_Init();
-
     Lcd_Clear();
     Lcd_Set_Cursor(1, 1);
     Lcd_Write_String("S1:");
@@ -110,10 +104,11 @@ void main(void) {
         ADC_CH0();
         ADC_CH1();
 
-//        USART_STRING("S1   S2   S3 \n"); //enviar los datos del pic a la compu
-        sprintf(data1, "%dV   %dV   %d", VAL1, VAL2, cont); //convertir los valores de voltaje y el contador a un string para que los lea bien la compu
+
+        
+        sprintf(data1, "%dV   %dV   %d", VAL1, VAL2, cont); //VALORES SE PASAN A CHAR PARA QUE LOS LEA LA TERMINAL VIRTUAL
         USART_STRING(data1); //enviar el string con los valores a la pc
-        USART_ESCRITURA(13);//13 y 10 la secuencia es para dar un salto de linea 
+        USART_ESCRITURA(13); //13 y 10 la secuencia es para dar un salto de linea 
         USART_ESCRITURA(10);
 
         sprintf(data2, "%dV   %dV    %d", VAL1, VAL2, cont);
@@ -143,6 +138,7 @@ void setup(void) {
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
+    TRISC7 = 1;
     //ADC 
     ADCON1 = 0b00000000; //Justificado a la izquierda
     PIE1bits.ADIE = 0;
@@ -153,21 +149,24 @@ void setup(void) {
     //INTERRUPCION
     INTCONbits.PEIE = 1;
     PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
+//    PIR1bits.RCIF = 1;
     INTCONbits.GIE = 1;
 
     // USART CONFIG
+    SPBRGH = 0;
     SPBRG = 12; //BAUD RATE DE 9600 A 8MHz
-    TXSTAbits.CSRC = 0;
-    TXSTAbits.TX9 = 0; //8 bits
+    
+//    TXSTAbits.CSRC = 0;
+//    TXSTAbits.TX9 = 0; //8 bits
     TXSTAbits.TXEN = 1; //ENABLE
     TXSTAbits.SYNC = 0; // ASYNC
-    TXSTAbits.BRGH = 0; //LOW SPEED
-    TXSTAbits.TRMT = 0;
+//    TXSTAbits.BRGH = 0; //LOW SPEED
+//    TXSTAbits.TRMT = 0;
 
     RCSTAbits.SPEN = 1; // ENABLE
-    RCSTAbits.RX9 = 0; //8 bits
+//    RCSTAbits.RX9 = 0; //8 bits
     RCSTAbits.CREN = 1;
+    RCREG = 0;
 
 
 

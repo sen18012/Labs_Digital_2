@@ -2889,23 +2889,18 @@ int VAL2;
 
 
 
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
+void __attribute__((picinterrupt(("")))) ISR(void){
     if (RCIF == 1) {
-        RCIF = 0;
-        USART_LEER = USART_LECTURA();
+        USART_LEER = RCREG;
         if (USART_LEER == '+') {
             cont = cont + 1;
-        }
+            }
         else if (USART_LEER == '-') {
             cont = cont - 1;
         }
+        USART_LEER = 0;
     }
-
 }
-
-
-
 
 
 
@@ -2925,7 +2920,6 @@ void main(void) {
 
     TRISD = 0x00;
     Lcd_Init();
-
     Lcd_Clear();
     Lcd_Set_Cursor(1, 1);
     Lcd_Write_String("S1:");
@@ -2936,6 +2930,7 @@ void main(void) {
     while (1) {
         ADC_CH0();
         ADC_CH1();
+
 
 
         sprintf(data1, "%dV   %dV   %d", VAL1, VAL2, cont);
@@ -2970,6 +2965,7 @@ void setup(void) {
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
+    TRISC7 = 1;
 
     ADCON1 = 0b00000000;
     PIE1bits.ADIE = 0;
@@ -2980,21 +2976,24 @@ void setup(void) {
 
     INTCONbits.PEIE = 1;
     PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
+
     INTCONbits.GIE = 1;
 
 
+    SPBRGH = 0;
     SPBRG = 12;
-    TXSTAbits.CSRC = 0;
-    TXSTAbits.TX9 = 0;
+
+
+
     TXSTAbits.TXEN = 1;
     TXSTAbits.SYNC = 0;
-    TXSTAbits.BRGH = 0;
-    TXSTAbits.TRMT = 0;
+
+
 
     RCSTAbits.SPEN = 1;
-    RCSTAbits.RX9 = 0;
+
     RCSTAbits.CREN = 1;
+    RCREG = 0;
 
 
 

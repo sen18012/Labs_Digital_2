@@ -25,6 +25,13 @@
 //  }
 //  return 0;                                       //Returns 0 to indicate UART initialization failed
 //}
+
+uint8_t USART_LECTURA(){
+  while(!RCIF);
+  return RCREG;
+} 
+
+
 void USART_ESCRITURA(uint8_t a){
     while(!TRMT);
     TXREG = a;
@@ -35,7 +42,4 @@ void USART_STRING(char *a){
         USART_ESCRITURA(a[i]);
     }
 }
-uint8_t USART_LECTURA(){
-  while(!RCIF);
-  return RCREG;
-} 
+

@@ -39,22 +39,20 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "132
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"66 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
+"65 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"96
+"91
 [v _main main `(v  1 e 1 0 ]
-"133
+"128
 [v _setup setup `(v  1 e 1 0 ]
-"176
+"175
 [v _ADC_CH0 ADC_CH0 `(v  1 e 1 0 ]
-"191
+"190
 [v _ADC_CH1 ADC_CH1 `(v  1 e 1 0 ]
-"28 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\USART.c
+"35 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\USART.c
 [v _USART_ESCRITURA USART_ESCRITURA `(v  1 e 1 0 ]
-"32
+"39
 [v _USART_STRING USART_STRING `(v  1 e 1 0 ]
-"38
-[v _USART_LECTURA USART_LECTURA `(uc  1 e 1 0 ]
 "7 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\ADC.c
 [v _VALOR_ADC VALOR_ADC `uc  1 e 1 0 ]
 "166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
@@ -69,7 +67,7 @@
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "459
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S127 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S125 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -79,14 +77,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S136 . 1 `uc 1 . 1 0 :2:0 
+[s S134 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S141 . 1 `S127 1 . 1 0 `S136 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES141  1 e 1 @11 ]
-[s S106 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S139 . 1 `S125 1 . 1 0 `S134 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES139  1 e 1 @11 ]
+[s S104 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -95,9 +93,9 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S114 . 1 `S106 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES114  1 e 1 @12 ]
-[s S197 . 1 `uc 1 RX9D 1 0 :1:0 
+[u S112 . 1 `S104 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES112  1 e 1 @12 ]
+[s S196 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -107,31 +105,31 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S206 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S205 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S210 . 1 `uc 1 . 1 0 :6:0 
+[s S209 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S213 . 1 `uc 1 . 1 0 :6:0 
+[s S212 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S216 . 1 `S197 1 . 1 0 `S206 1 . 1 0 `S210 1 . 1 0 `S213 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES216  1 e 1 @24 ]
+[u S215 . 1 `S196 1 . 1 0 `S205 1 . 1 0 `S209 1 . 1 0 `S212 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES215  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S246 . 1 `uc 1 ADON 1 0 :1:0 
+[s S245 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S251 . 1 `uc 1 . 1 0 :1:0 
+[s S250 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -140,14 +138,14 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S260 . 1 `uc 1 . 1 0 :1:0 
+[s S259 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S263 . 1 `uc 1 . 1 0 :1:0 
+[s S262 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S266 . 1 `S246 1 . 1 0 `S251 1 . 1 0 `S260 1 . 1 0 `S263 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES266  1 e 1 @31 ]
+[u S265 . 1 `S245 1 . 1 0 `S250 1 . 1 0 `S259 1 . 1 0 `S262 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES265  1 e 1 @31 ]
 "1346
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "1416
@@ -160,7 +158,7 @@
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S87 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S85 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -169,9 +167,9 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S95 . 1 `S87 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES95  1 e 1 @140 ]
-[s S160 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S93 . 1 `S85 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES93  1 e 1 @140 ]
+[s S159 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -181,17 +179,19 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S169 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S168 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S173 . 1 `uc 1 . 1 0 :6:0 
+[s S172 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S176 . 1 `S160 1 . 1 0 `S169 1 . 1 0 `S173 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES176  1 e 1 @152 ]
+[u S175 . 1 `S159 1 . 1 0 `S168 1 . 1 0 `S172 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES175  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"2704
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
 "2970
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
 "2977
@@ -206,6 +206,8 @@
 [v _RE0 RE0 `VEb  1 e 0 @72 ]
 "4208
 [v _RE1 RE1 `VEb  1 e 0 @73 ]
+"4469
+[v _TRISC7 TRISC7 `VEb  1 e 0 @1087 ]
 "4508
 [v _TRMT TRMT `VEb  1 e 0 @1217 ]
 "358 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
@@ -226,10 +228,10 @@
 [v _VAL1 VAL1 `i  1 e 2 0 ]
 "58
 [v _VAL2 VAL2 `i  1 e 2 0 ]
-"96
+"91
 [v _main main `(v  1 e 1 0 ]
 {
-"127
+"122
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -274,30 +276,30 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
 "30
 } 0
-"133 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
+"128 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"174
+"173
 } 0
-"32 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\USART.c
+"39 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\USART.c
 [v _USART_STRING USART_STRING `(v  1 e 1 0 ]
 {
 [v USART_STRING@a a `*.4uc  1 a 1 wreg ]
-"33
+"40
 [v USART_STRING@i i `uc  1 a 1 6 ]
-"32
+"39
 [v USART_STRING@a a `*.4uc  1 a 1 wreg ]
-"34
+"41
 [v USART_STRING@a a `*.4uc  1 a 1 5 ]
-"37
+"44
 } 0
-"28
+"35
 [v _USART_ESCRITURA USART_ESCRITURA `(v  1 e 1 0 ]
 {
 [v USART_ESCRITURA@a a `uc  1 a 1 wreg ]
 [v USART_ESCRITURA@a a `uc  1 a 1 wreg ]
 [v USART_ESCRITURA@a a `uc  1 a 1 3 ]
-"31
+"38
 } 0
 "132 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\LCD.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
@@ -358,15 +360,15 @@
 [v Lcd_Port@a a `uc  1 a 1 3 ]
 "59
 } 0
-"191 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
+"190 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
 [v _ADC_CH1 ADC_CH1 `(v  1 e 1 0 ]
 {
-"203
+"202
 } 0
-"176
+"175
 [v _ADC_CH0 ADC_CH0 `(v  1 e 1 0 ]
 {
-"189
+"188
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -403,13 +405,8 @@
 [v ADC_ch@channel channel `us  1 p 2 3 ]
 "40
 } 0
-"66 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
+"65 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"78
-} 0
-"38 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Laboratorio_3\LAB_No3.X\USART.c
-[v _USART_LECTURA USART_LECTURA `(uc  1 e 1 0 ]
-{
-"41
+"76
 } 0
