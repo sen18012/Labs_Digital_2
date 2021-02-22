@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="1">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff3c0200002c0000003607000006040000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff3c0200002c0000003607000006040000</PLACEMENT>
   <WINDOW type="default" module="STARTUP"/>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
@@ -75,7 +75,7 @@
    <POPUP w="130" x="188" flags="00000008" y="300" h="151" pid="7" iid="1">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="208" flags="80000002" y="320" h="8" pid="8" iid="1">
+   <POPUP w="8" x="208" flags="00000000" y="320" h="8" pid="8" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -121,7 +121,7 @@
    <POPUP w="130" x="308" flags="00000008" y="420" h="151" pid="7" iid="9">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="328" flags="80000002" y="440" h="8" pid="8" iid="9">
+   <POPUP w="8" x="328" flags="00000000" y="440" h="8" pid="8" iid="9">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -167,7 +167,7 @@
    <POPUP w="130" x="428" flags="00000008" y="540" h="151" pid="7" iid="30">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="448" flags="80000002" y="560" h="8" pid="8" iid="30">
+   <POPUP w="8" x="448" flags="00000000" y="560" h="8" pid="8" iid="30">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -213,7 +213,7 @@
    <POPUP w="130" x="548" flags="00000008" y="660" h="151" pid="7" iid="59">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="568" flags="80000002" y="680" h="8" pid="8" iid="59">
+   <POPUP w="8" x="568" flags="00000000" y="680" h="8" pid="8" iid="59">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>

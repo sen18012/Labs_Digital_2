@@ -15,6 +15,7 @@
 #include <pic16f887.h>
 #include "LCD.h"
 #include "USART.h"
+#include "SPI_M.h"
 
 // CONFIG1
 #pragma config FOSC = HS        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -160,6 +161,10 @@ void setup(void) {
     RCSTAbits.SPEN = 1; // ENABLE
     RCSTAbits.CREN = 1;
     RCREG = 0;
+    
+    
+    PORTCbits.RC2 = 1; //Iniciamos Com SPI Como MASTER
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
 
