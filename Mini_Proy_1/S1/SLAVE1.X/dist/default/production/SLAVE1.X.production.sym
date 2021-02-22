@@ -144,7 +144,7 @@ maintext EEC F0F CODE EEC 0
 text3 EDC EEB CODE EDC 0
 %locals
 dist/default/production\SLAVE1.X.production.o
-C:\Users\katha\AppData\Local\Temp\sfe8.s
+C:\Users\katha\AppData\Local\Temp\s2rc.s
 625 7F8 0 CODE 0
 628 7F8 0 CODE 0
 645 7F8 0 CODE 0

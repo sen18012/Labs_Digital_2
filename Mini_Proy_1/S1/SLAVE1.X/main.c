@@ -56,7 +56,7 @@ void main(void) {
     setup();
     while (1) {
         ADC_CH();
-        PORTB = ADC_res;
+        PORTD = ADC_res;
     }
     return;
 }

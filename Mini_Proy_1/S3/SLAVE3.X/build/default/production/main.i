@@ -2847,9 +2847,11 @@ unsigned ADC_chT(unsigned short channel);
 
 
 uint8_t ADC_res;
-# 49 "main.c"
+uint8_t ADC_con;
+# 50 "main.c"
 void setup(void);
 void ADC_CH(void);
+void sem(void);
 
 
 
@@ -2858,7 +2860,7 @@ void main(void) {
     setup();
     while (1) {
         ADC_CH();
-        PORTB = ADC_res;
+
     }
     return;
 }
@@ -2881,12 +2883,30 @@ void setup(void) {
     PORTD = 0;
     PORTE = 0;
 
-    ADCON1 = 0b00000000;
+    ADCON1 = 0b00010000;
     PIE1bits.ADIE = 0;
     PIR1bits.ADIF = 0;
     OPTION_REG = 0b00000000;
     INTCON = 0b00000000;
 
+}
+
+void sem(void){
+    if (ADC_con < 26){
+        PORTDbits.RD0 = 0;
+        PORTDbits.RD1 = 0;
+        PORTDbits.RD2 = 1;
+    }
+    else if (25 <= ADC_con && ADC_con <= 36){
+        PORTDbits.RD0 = 0;
+        PORTDbits.RD1 = 1;
+        PORTDbits.RD2 = 0;
+    }
+    else if (ADC_con >36){
+        PORTDbits.RD0 = 1;
+        PORTDbits.RD1 = 0;
+        PORTDbits.RD2 = 0;
+    }
 }
 
 void ADC_CH(void) {
@@ -2897,7 +2917,9 @@ void ADC_CH(void) {
     _delay((unsigned long)((40)*(8000000/4000000.0)));
     ADCON0bits.GO = 1;
     while (ADCON0bits.GO != 0) {
-        ADC_res = ADC_valT(ADRESL, ADRESH);
+        ADC_res = ADRESH;
 
     }
+    ADC_con = ((ADRESH*150)/255);
+    sem();
 }

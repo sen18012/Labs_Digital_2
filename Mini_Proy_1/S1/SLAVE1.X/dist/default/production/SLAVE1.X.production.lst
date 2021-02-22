@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Tue Feb 16 22:53:57 2021
+                                                                                               Sat Feb 20 21:54:37 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -299,10 +299,10 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    285  000B                     _INTCON	set	11
    286  000C                     _PIR1bits	set	12
    287  0009                     _PORTE	set	9
-   288  0008                     _PORTD	set	8
-   289  0007                     _PORTC	set	7
+   288  0007                     _PORTC	set	7
+   289  0006                     _PORTB	set	6
    290  0005                     _PORTA	set	5
-   291  0006                     _PORTB	set	6
+   291  0008                     _PORTD	set	8
    292  009E                     _ADRESL	set	158
    293  0081                     _OPTION_REG	set	129
    294  008C                     _PIE1bits	set	140
@@ -437,11 +437,11 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    423  077B  120A  118A  27CC  120A  118A  	fcall	_ADC_CH
    424  0780                     l782:
    425                           
-   426                           ;main.c: 59:         PORTB = ADC_res;
+   426                           ;main.c: 59:         PORTD = ADC_res;
    427  0780  0873               	movf	_ADC_res,w
    428  0781  1283               	bcf	3,5	;RP0=0, select bank0
    429  0782  1303               	bcf	3,6	;RP1=0, select bank0
-   430  0783  0086               	movwf	6	;volatile
+   430  0783  0088               	movwf	8	;volatile
    431  0784  2F7B               	goto	l780
    432  0785  120A  118A  2800   	ljmp	start
    433  0788                     __end_of_main:
@@ -1001,7 +1001,7 @@ DATA                 0      0       8      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Tue Feb 16 22:53:57 2021
+Symbol Table                                                                                   Sat Feb 20 21:54:37 2021
 
                      l63 07A7                       l90 07CB                       l82 0775  
                      l69 07F7                       l86 07A9                       l88 07B0  

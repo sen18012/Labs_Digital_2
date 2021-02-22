@@ -2527,20 +2527,20 @@ void main(void) {
     setup();
 
     while (1) {
-            if (PORTBbits.RB0 == 0) {
-                while (PORTBbits.RB0 == 0) {
+            if (PORTAbits.RA0 == 0) {
+                while (PORTAbits.RA0 == 0) {
                     contador = contador;
                 }
                 contador = contador + 1;
-                PORTC = contador;
+                PORTD = contador;
             }
 
-            if (PORTBbits.RB1 == 0) {
-                while (PORTBbits.RB1 == 0) {
+            if (PORTAbits.RA1 == 0) {
+                while (PORTAbits.RA1 == 0) {
                     contador = contador;
                 }
                 contador = contador - 1;
-                PORTC = contador;
+                PORTD = contador;
 
             }
     }
@@ -2559,9 +2559,9 @@ void setup(void) {
     PORTD = 0;
     TRISE = 0;
     PORTE = 0;
-    TRISB = 0b00000011;
+    TRISB = 0;
     PORTB = 0;
-    TRISA = 0;
+    TRISA = 0b00000011;
     PORTA = 0;
 
 

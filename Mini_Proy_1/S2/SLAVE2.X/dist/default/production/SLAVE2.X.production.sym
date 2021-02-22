@@ -55,7 +55,7 @@ __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 end_of_initialization 7FC 0 CODE 0
 ___stacklo 0 0 ABS 0
-_PORTBbits 6 0 ABS 0
+_PORTAbits 5 0 ABS 0
 __Hstrings 0 0 ABS 0
 __Lstrings 0 0 ABS 0
 __Hbank0 0 0 ABS 0
@@ -119,7 +119,7 @@ maintext F96 FF3 CODE F96 0
 text1 F4E F95 CODE F4E 0
 %locals
 dist/default/production\SLAVE2.X.production.o
-C:\Users\katha\AppData\Local\Temp\saus.s
+C:\Users\katha\AppData\Local\Temp\sd64.s
 451 7FA 0 CODE 0
 454 7FA 0 CODE 0
 465 7FA 0 CODE 0
@@ -150,7 +150,7 @@ main.c
 80 7B7 0 CODE 0
 81 7BA 0 CODE 0
 82 7BD 0 CODE 0
-83 7C1 0 CODE 0
-84 7C4 0 CODE 0
+83 7C0 0 CODE 0
+84 7C3 0 CODE 0
 85 7C7 0 CODE 0
 91 7CA 0 CODE 0
