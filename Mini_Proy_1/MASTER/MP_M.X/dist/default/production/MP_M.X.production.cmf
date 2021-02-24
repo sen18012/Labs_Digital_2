@@ -1,0 +1,742 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production\MP_M.X.production.o
+cinit CODE 0 7F3 7F3 D 2
+text1 CODE 0 690 690 163 2
+text2 CODE 0 28F 28F 12 2
+text3 CODE 0 3D3 3D3 3A 2
+text4 CODE 0 44F 44F 44 2
+text5 CODE 0 2A1 2A1 15 2
+text6 CODE 0 399 399 3A 2
+text7 CODE 0 2CC 2CC 16 2
+text8 CODE 0 2FC 2FC 1E 2
+text9 CODE 0 276 276 C 2
+text10 CODE 0 40D 40D 42 2
+text11 CODE 0 2B6 2B6 16 2
+text12 CODE 0 31A 31A 24 2
+text13 CODE 0 493 493 4B 2
+text14 CODE 0 282 282 D 2
+text15 CODE 0 2E2 2E2 1A 2
+text16 CODE 0 258 258 6 2
+text17 CODE 0 52E 52E 59 2
+text18 CODE 0 363 363 36 2
+text19 CODE 0 4DE 4DE 50 2
+text20 CODE 0 252 252 6 2
+text21 CODE 0 26D 26D 9 2
+text22 CODE 0 25E 25E 7 2
+text23 CODE 0 33E 33E 25 2
+text24 CODE 0 587 587 69 2
+maintext CODE 0 5F0 5F0 A0 2
+cstackCOMMON COMMON 1 70 70 E 1
+cstackBANK0 BANK0 1 56 56 14 1
+bssBANK0 BANK0 1 20 20 36 1
+strings STRING 0 3 3 3B 2
+clrtext CODE 0 265 265 8 2
+config CONFIG 4 2007 2007 2 2
+$C:\Users\katha\AppData\Local\Temp\sac0.o
+end_init CODE 0 0 0 3 2
+config CONFIG 4 2007 2007 2 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 6A-6F 1
+RAM A0-EF 1
+RAM 110-16F 1
+RAM 190-1EF 1
+BANK0 6A-6F 1
+BANK1 A0-EF 1
+BANK2 110-16F 1
+BANK3 190-1EF 1
+CONST 3E-251 2
+CONST 800-1FFF 2
+ENTRY 3E-251 2
+ENTRY 800-1FFF 2
+IDLOC 2000-2003 2
+STACK 110-16F 1
+CODE 3E-251 2
+CODE 800-1FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-10F 1
+SFR3 180-18F 1
+EEDATA 2100-21FF 2
+STRCODE 3E-251 2
+STRCODE 800-1FFF 2
+STRING 3E-251 2
+STRING 800-1FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\MP_M.X.production.o
+7F3 cinit CODE >1090:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F3 cinit CODE >1093:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F3 cinit CODE >1152:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F4 cinit CODE >1153:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F5 cinit CODE >1154:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F6 cinit CODE >1155:C:\Users\katha\AppData\Local\Temp\sac0.s
+7F7 cinit CODE >1156:C:\Users\katha\AppData\Local\Temp\sac0.s
+7FC cinit CODE >1162:C:\Users\katha\AppData\Local\Temp\sac0.s
+7FC cinit CODE >1164:C:\Users\katha\AppData\Local\Temp\sac0.s
+7FD cinit CODE >1165:C:\Users\katha\AppData\Local\Temp\sac0.s
+587 text24 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+587 text24 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+58A text24 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+58E text24 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+593 text24 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+595 text24 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+599 text24 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+59E text24 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5A2 text24 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5A4 text24 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5AA text24 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5AC text24 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5AD text24 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5B4 text24 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5B8 text24 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5BC text24 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5C3 text24 CODE >31:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5CD text24 CODE >32:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5D3 text24 CODE >33:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5D4 text24 CODE >35:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5DB text24 CODE >36:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5E1 text24 CODE >38:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5E6 text24 CODE >39:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5EB text24 CODE >40:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+5EF text24 CODE >41:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
+33E text23 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+33E text23 CODE >43:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+340 text23 CODE >45:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+344 text23 CODE >46:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+34A text23 CODE >47:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+351 text23 CODE >48:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+358 text23 CODE >49:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+35E text23 CODE >52:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+362 text23 CODE >53:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+25E text22 CODE >31:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+25E text22 CODE >33:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+264 text22 CODE >34:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+26D text21 CODE >49:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+26D text21 CODE >51:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+272 text21 CODE >52:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+275 text21 CODE >53:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+252 text20 CODE >36:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+253 text20 CODE >38:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+257 text20 CODE >39:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+4DE text19 CODE >188:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+4DE text19 CODE >190:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+4E1 text19 CODE >193:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+4E7 text19 CODE >194:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+4F1 text19 CODE >195:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+514 text19 CODE >197:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+51D text19 CODE >198:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+520 text19 CODE >199:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+52D text19 CODE >200:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+363 text18 CODE >202:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+363 text18 CODE >203:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+366 text18 CODE >204:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+36F text18 CODE >206:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+375 text18 CODE >207:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+37F text18 CODE >209:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+388 text18 CODE >210:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+38B text18 CODE >211:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+398 text18 CODE >212:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+52E text17 CODE >214:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+52E text17 CODE >215:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+531 text17 CODE >216:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+53A text17 CODE >218:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+540 text17 CODE >219:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+54A text17 CODE >220:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+56D text17 CODE >222:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+576 text17 CODE >223:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+579 text17 CODE >225:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+586 text17 CODE >226:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+258 text16 CODE >17:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+259 text16 CODE >19:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+25D text16 CODE >21:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2E2 text15 CODE >22:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2E3 text15 CODE >24:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2E6 text15 CODE >25:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2EC text15 CODE >26:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2EF text15 CODE >27:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2F8 text15 CODE >28:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2FB text15 CODE >29:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+282 text14 CODE >31:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+282 text14 CODE >33:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+288 text14 CODE >34:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+28E text14 CODE >35:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+493 text13 CODE >58:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+493 text13 CODE >60:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+499 text13 CODE >61:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4A2 text13 CODE >62:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4A8 text13 CODE >63:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4B1 text13 CODE >64:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4B7 text13 CODE >65:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4BF text13 CODE >66:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4C5 text13 CODE >68:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4CB text13 CODE >69:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4D1 text13 CODE >70:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4D7 text13 CODE >71:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+4DD text13 CODE >75:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+31A text12 CODE >37:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+31B text12 CODE >40:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+320 text12 CODE >42:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+325 text12 CODE >46:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+32B text12 CODE >47:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+32C text12 CODE >48:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+332 text12 CODE >50:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+337 text12 CODE >54:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+33D text12 CODE >56:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2B6 text11 CODE >77:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2B7 text11 CODE >83:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2BA text11 CODE >88:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2C0 text11 CODE >89:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2C3 text11 CODE >90:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2C8 text11 CODE >91:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+2CB text11 CODE >92:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+40D text10 CODE >94:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+40D text10 CODE >97:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+410 text10 CODE >98:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+44E text10 CODE >99:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\LCD.c
+276 text9 CODE >13:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+277 text9 CODE >14:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+27D text9 CODE >15:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+281 text9 CODE >16:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+2FC text8 CODE >17:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+2FD text8 CODE >19:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+2FF text8 CODE >20:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+30A text8 CODE >21:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+319 text8 CODE >22:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\USART.c
+2CC text7 CODE >14:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2CD text7 CODE >16:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2D0 text7 CODE >17:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2D4 text7 CODE >19:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2D6 text7 CODE >20:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2D7 text7 CODE >21:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2D8 text7 CODE >24:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2DB text7 CODE >25:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2DC text7 CODE >26:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2DC text7 CODE >28:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+2E1 text7 CODE >29:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\SPI.c
+399 text6 CODE >147:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+399 text6 CODE >148:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+39C text6 CODE >149:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+39D text6 CODE >150:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A0 text6 CODE >151:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A1 text6 CODE >152:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A2 text6 CODE >154:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A5 text6 CODE >155:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A6 text6 CODE >156:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A7 text6 CODE >157:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3A8 text6 CODE >159:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3AB text6 CODE >160:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3AE text6 CODE >161:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3B1 text6 CODE >162:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3B4 text6 CODE >163:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3B7 text6 CODE >164:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3BA text6 CODE >167:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3C3 text6 CODE >170:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3C4 text6 CODE >171:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3C7 text6 CODE >172:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3C8 text6 CODE >175:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3C9 text6 CODE >176:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3CB text6 CODE >178:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3CC text6 CODE >179:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3CD text6 CODE >181:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3D0 text6 CODE >182:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3D1 text6 CODE >183:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+3D2 text6 CODE >186:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+2A1 text5 CODE >4:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2A2 text5 CODE >6:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2A3 text5 CODE >43:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2A7 text5 CODE >44:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2AB text5 CODE >45:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2AD text5 CODE >46:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2AF text5 CODE >47:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2B4 text5 CODE >50:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+2B5 text5 CODE >51:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
+44F text4 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+44F text4 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+451 text4 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+457 text4 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+459 text4 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+45A text4 CODE >17:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+461 text4 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+465 text4 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+469 text4 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+470 text4 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+47A text4 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+480 text4 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+481 text4 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+488 text4 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+48E text4 CODE >29:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+492 text4 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
+3D3 text3 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3D3 text3 CODE >12:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3D9 text3 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3DB text3 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3DC text3 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3E3 text3 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3E7 text3 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3EB text3 CODE >19:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3F5 text3 CODE >20:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+3FB text3 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+402 text3 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+408 text3 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+40C text3 CODE >25:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
+28F text2 CODE >8:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\isdigit.c
+290 text2 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\isdigit.c
+2A0 text2 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\isdigit.c
+690 text1 CODE >505:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+693 text1 CODE >550:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+697 text1 CODE >553:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+698 text1 CODE >555:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+69E text1 CODE >558:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6A9 text1 CODE >559:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6AA text1 CODE >565:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6AB text1 CODE >628:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6B7 text1 CODE >630:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6BB text1 CODE >645:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6BC text1 CODE >646:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6BD text1 CODE >647:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6CE text1 CODE >648:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6DD text1 CODE >646:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6EE text1 CODE >652:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+6EF text1 CODE >848:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+70E text1 CODE >1285:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+71A text1 CODE >1287:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+71E text1 CODE >1288:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+722 text1 CODE >1289:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+727 text1 CODE >1316:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+732 text1 CODE >1317:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+736 text1 CODE >1331:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+738 text1 CODE >1332:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+754 text1 CODE >1333:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+75E text1 CODE >1365:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+76E text1 CODE >1366:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+76F text1 CODE >1367:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+783 text1 CODE >1368:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+789 text1 CODE >1464:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+791 text1 CODE >1465:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+79D text1 CODE >1515:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+7CB text1 CODE >1550:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+7D3 text1 CODE >1500:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+7DC text1 CODE >553:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+7EE text1 CODE >1564:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+7F2 text1 CODE >1567:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
+5F0 maintext CODE >105:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+5F0 maintext CODE >106:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+5F5 maintext CODE >107:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+5F8 maintext CODE >108:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+5FD maintext CODE >109:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+602 maintext CODE >110:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+60A maintext CODE >111:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+613 maintext CODE >112:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+61F maintext CODE >113:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+628 maintext CODE >114:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+634 maintext CODE >115:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+63D maintext CODE >118:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+642 maintext CODE >119:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+647 maintext CODE >120:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+64C maintext CODE >121:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+650 maintext CODE >127:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+669 maintext CODE >129:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+66F maintext CODE >134:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+675 maintext CODE >135:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+67B maintext CODE >139:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+683 maintext CODE >140:C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_1\MASTER\MP_M.X\main.c
+265 clrtext CODE >1139:C:\Users\katha\AppData\Local\Temp\sac0.s
+265 clrtext CODE >1140:C:\Users\katha\AppData\Local\Temp\sac0.s
+266 clrtext CODE >1141:C:\Users\katha\AppData\Local\Temp\sac0.s
+266 clrtext CODE >1142:C:\Users\katha\AppData\Local\Temp\sac0.s
+267 clrtext CODE >1143:C:\Users\katha\AppData\Local\Temp\sac0.s
+268 clrtext CODE >1144:C:\Users\katha\AppData\Local\Temp\sac0.s
+269 clrtext CODE >1145:C:\Users\katha\AppData\Local\Temp\sac0.s
+26A clrtext CODE >1146:C:\Users\katha\AppData\Local\Temp\sac0.s
+26B clrtext CODE >1147:C:\Users\katha\AppData\Local\Temp\sac0.s
+26C clrtext CODE >1148:C:\Users\katha\AppData\Local\Temp\sac0.s
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___latbits 2 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___awdiv@counter 56 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+___lwmod@counter 7D 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Hspace_0 800 0 ABS 0 - -
+__Hspace_1 7E 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__Hspace_4 4010 0 ABS 0 - -
+_Lcd_Init 926 0 CODE 0 text13 dist/default/production\MP_M.X.production.o
+_Lcd_Port 4B0 0 CODE 0 text16 dist/default/production\MP_M.X.production.o
+spiInit@sTransmitEdge 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_S1 41 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_S2 40 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_S3 3F 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Init 9BC 0 CODE 0 text13 dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Port 4BC 0 CODE 0 text16 dist/default/production\MP_M.X.production.o
+__Hstrings 0 0 ABS 0 strings -
+_RCIF 65 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TEMP 38 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_TRMT 4C1 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\katha\AppData\Local\Temp\sac0.o
+_data 42 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_main BE0 0 CODE 0 maintext dist/default/production\MP_M.X.production.o
+btemp 7E 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_Lcd_Write_Char 56C 0 CODE 0 text11 dist/default/production\MP_M.X.production.o
+start 0 0 CODE 0 init C:\Users\katha\AppData\Local\Temp\sac0.o
+__size_of___awdiv 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_main 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of___lwdiv 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of___lwmod 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+Lcd_Port@a 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+?___wmul 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Hpowerup 0 0 CODE 0 powerup -
+__size_of_LEER_S1 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_LEER_S2 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_LEER_S3 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\katha\AppData\Local\Temp\sac0.o
+___bmul@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+wtemp0 7E 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Hfunctab 0 0 ENTRY 0 functab -
+__size_of_Lcd_Set_Cursor 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___awdiv@sign 57 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+__Hclrtext 0 0 ABS 0 clrtext -
+__end_of_Lcd_Write_Char 598 0 CODE 0 text11 dist/default/production\MP_M.X.production.o
+___wmul@multiplicand 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+_ANSELH 189 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___awdiv@dividend 78 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__end_of___bmul 56C 0 CODE 0 text5 dist/default/production\MP_M.X.production.o
+__end_of___wmul 6C6 0 CODE 0 text23 dist/default/production\MP_M.X.production.o
+__size_of_spiInit 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_spiRead 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Lmaintext 0 0 ABS 0 maintext -
+__size_of_sprintf 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___bmul@multiplier 73 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+___awdiv@divisor 76 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+___lwmod@divisor 78 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__end_of___awdiv BE0 0 CODE 0 text24 dist/default/production\MP_M.X.production.o
+__end_of___lwdiv 926 0 CODE 0 text4 dist/default/production\MP_M.X.production.o
+__end_of___lwmod 81A 0 CODE 0 text3 dist/default/production\MP_M.X.production.o
+__size_of_isdigit 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___stackhi 0 0 ABS 0 - C:\Users\katha\AppData\Local\Temp\sac0.o
+___stacklo 0 0 ABS 0 - C:\Users\katha\AppData\Local\Temp\sac0.o
+_dpowers 26 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+___lwdiv@quotient 75 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__end_of_LEER_S1 A5C 0 CODE 0 text19 dist/default/production\MP_M.X.production.o
+__end_of_LEER_S2 732 0 CODE 0 text18 dist/default/production\MP_M.X.production.o
+__end_of_LEER_S3 B0E 0 CODE 0 text17 dist/default/production\MP_M.X.production.o
+__size_of_setup 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+Lcd_Set_Cursor@temp 77 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+___lwmod@dividend 7A 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+spiInit@sDataSample 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+start_initialization FE6 0 CODE 0 cinit dist/default/production\MP_M.X.production.o
+_Lcd_Write_String 81A 0 CODE 0 text10 dist/default/production\MP_M.X.production.o
+clear_ram0 4CA 0 CODE 0 clrtext dist/default/production\MP_M.X.production.o
+_SPBRGH 9A 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__pcstackBANK0 56 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+_SSPBUF 13 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_SSPCON 14 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISC0 438 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISC1 439 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISC2 43A 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISC3 43B 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISC5 43D 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_Lcd_Cmd 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_isdigit$958 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\katha\AppData\Local\Temp\sac0.o
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hcinit 1000 0 CODE 0 cinit -
+__size_of_spiReceiveWait 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Hstack 0 0 STACK 2 stack -
+__stringbase 24 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+___lwdiv@counter 77 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Hmaintext 0 0 ABS 0 maintext -
+__end_of_spiInit 5C4 0 CODE 0 text7 dist/default/production\MP_M.X.production.o
+__end_of_spiRead 4EC 0 CODE 0 text21 dist/default/production\MP_M.X.production.o
+__end_of_sprintf FE6 0 CODE 0 text1 dist/default/production\MP_M.X.production.o
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 4012 0 CONFIG 4 config -
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__end_of_isdigit 542 0 CODE 0 text2 dist/default/production\MP_M.X.production.o
+__Lcinit FE6 0 CODE 0 cinit -
+__Lstack 0 0 STACK 2 stack -
+_PORTCbits 7 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_INTCONbits B 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hinit 0 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Linit 0 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Ltext 0 0 ABS 0 text -
+___bmul 542 0 CODE 0 text5 dist/default/production\MP_M.X.production.o
+___wmul 67C 0 CODE 0 text23 dist/default/production\MP_M.X.production.o
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+_ADC 3A 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_RE0 48 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_RE1 49 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__S0 800 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+sprintf@val 63 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Write_String 89E 0 CODE 0 text10 dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Clear 51E 0 CODE 0 text14 dist/default/production\MP_M.X.production.o
+__Lintentry 0 0 CODE 0 intentry -
+__size_of_Lcd_Write_String 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__stringtab 6 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+Lcd_Write_String@a 73 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+Lcd_Write_String@i 78 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\katha\AppData\Local\Temp\sac0.o
+__size_of_Lcd_Clear 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Cmd 5F8 0 CODE 0 text15 dist/default/production\MP_M.X.production.o
+_USART_STRING 5F8 0 CODE 0 text8 dist/default/production\MP_M.X.production.o
+__size_of___bmul 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of___wmul 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__end_of_USART_ESCRITURA 504 0 CODE 0 text9 dist/default/production\MP_M.X.production.o
+_RCSTAbits 18 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_PIE1bits 8C 0 ABS 0 - dist/default/production\MP_M.X.production.o
+sprintf@flag 61 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+sprintf@prec 65 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+__ptext10 81A 0 CODE 0 text10 dist/default/production\MP_M.X.production.o
+__ptext11 56C 0 CODE 0 text11 dist/default/production\MP_M.X.production.o
+__ptext12 634 0 CODE 0 text12 dist/default/production\MP_M.X.production.o
+__ptext13 926 0 CODE 0 text13 dist/default/production\MP_M.X.production.o
+__ptext14 504 0 CODE 0 text14 dist/default/production\MP_M.X.production.o
+__ptext15 5C4 0 CODE 0 text15 dist/default/production\MP_M.X.production.o
+__ptext16 4B0 0 CODE 0 text16 dist/default/production\MP_M.X.production.o
+__ptext17 A5C 0 CODE 0 text17 dist/default/production\MP_M.X.production.o
+__ptext18 6C6 0 CODE 0 text18 dist/default/production\MP_M.X.production.o
+__ptext19 9BC 0 CODE 0 text19 dist/default/production\MP_M.X.production.o
+__ptext20 4A4 0 CODE 0 text20 dist/default/production\MP_M.X.production.o
+__ptext21 4DA 0 CODE 0 text21 dist/default/production\MP_M.X.production.o
+__ptext22 4BC 0 CODE 0 text22 dist/default/production\MP_M.X.production.o
+__ptext23 67C 0 CODE 0 text23 dist/default/production\MP_M.X.production.o
+__ptext24 B0E 0 CODE 0 text24 dist/default/production\MP_M.X.production.o
+_Lcd_Clear 504 0 CODE 0 text14 dist/default/production\MP_M.X.production.o
+__size_of_Lcd_Write_Char 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+___awdiv B0E 0 CODE 0 text24 dist/default/production\MP_M.X.production.o
+_Lcd_Set_Cursor 634 0 CODE 0 text12 dist/default/production\MP_M.X.production.o
+___lwdiv 89E 0 CODE 0 text4 dist/default/production\MP_M.X.production.o
+___lwmod 7A6 0 CODE 0 text3 dist/default/production\MP_M.X.production.o
+__pmaintext BE0 0 CODE 0 maintext dist/default/production\MP_M.X.production.o
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 0 0 CONFIG 4 config -
+___wmul@multiplier 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+_LEER_S1 9BC 0 CODE 0 text19 dist/default/production\MP_M.X.production.o
+_LEER_S2 6C6 0 CODE 0 text18 dist/default/production\MP_M.X.production.o
+_LEER_S3 A5C 0 CODE 0 text17 dist/default/production\MP_M.X.production.o
+___lwdiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__size_of_USART_STRING 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__end_of__stringtab 26 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+_USART_ESCRITURA 4EC 0 CODE 0 text9 dist/default/production\MP_M.X.production.o
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__Lspace_4 0 0 ABS 0 - -
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__Lend_init 0 0 CODE 0 end_init -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+end_of_initialization FF8 0 CODE 0 cinit dist/default/production\MP_M.X.production.o
+__end_of_Lcd_Set_Cursor 67C 0 CODE 0 text12 dist/default/production\MP_M.X.production.o
+__Hintentry 0 0 CODE 0 intentry -
+__end_of_USART_STRING 634 0 CODE 0 text8 dist/default/production\MP_M.X.production.o
+Lcd_Set_Cursor@a 76 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+Lcd_Set_Cursor@b 74 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Lstrings 0 0 ABS 0 strings -
+___awdiv@quotient 58 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+?___awdiv 76 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+___lwdiv@dividend 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+?___lwdiv 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+?___lwmod 78 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Hreset_vec 0 0 CODE 0 reset_vec -
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__ptext1 D20 0 CODE 0 text1 dist/default/production\MP_M.X.production.o
+__ptext2 51E 0 CODE 0 text2 dist/default/production\MP_M.X.production.o
+__ptext3 7A6 0 CODE 0 text3 dist/default/production\MP_M.X.production.o
+__ptext4 89E 0 CODE 0 text4 dist/default/production\MP_M.X.production.o
+__ptext5 542 0 CODE 0 text5 dist/default/production\MP_M.X.production.o
+__ptext6 732 0 CODE 0 text6 dist/default/production\MP_M.X.production.o
+__ptext7 598 0 CODE 0 text7 dist/default/production\MP_M.X.production.o
+__ptext8 5F8 0 CODE 0 text8 dist/default/production\MP_M.X.production.o
+__ptext9 4EC 0 CODE 0 text9 dist/default/production\MP_M.X.production.o
+USART_STRING@a 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+USART_STRING@i 73 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+_spiInit 598 0 CODE 0 text7 dist/default/production\MP_M.X.production.o
+_spiRead 4DA 0 CODE 0 text21 dist/default/production\MP_M.X.production.o
+_sprintf D20 0 CODE 0 text1 dist/default/production\MP_M.X.production.o
+spiWrite@dat 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Lpowerup 0 0 CODE 0 powerup -
+spiInit@sType 73 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+sprintf@ap 60 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+sprintf@sp 62 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+_isdigit 51E 0 CODE 0 text2 dist/default/production\MP_M.X.production.o
+__Lreset_vec 0 0 CODE 0 reset_vec -
+__end_of__initialization FF8 0 CODE 0 cinit dist/default/production\MP_M.X.production.o
+__size_of_spiWrite 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Lfunctab 0 0 ENTRY 0 functab -
+Lcd_Cmd@a 73 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+_spiReceiveWait 4BC 0 CODE 0 text22 dist/default/production\MP_M.X.production.o
+__Lclrtext 0 0 ABS 0 clrtext -
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__size_of_USART_ESCRITURA 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TXSTAbits 98 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_SSPSTAT 94 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_Lcd_Init 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__size_of_Lcd_Port 0 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__Hend_init 6 0 CODE 0 end_init -
+sprintf@c 66 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+sprintf@f 56 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+__end_of_main D20 0 CODE 0 maintext dist/default/production\MP_M.X.production.o
+isdigit@c 71 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+_ANSEL 188 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__end_of_dpowers 3A 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+?_sprintf 56 0 BANK0 1 cstackBANK0 dist/default/production\MP_M.X.production.o
+_PORTB 6 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_PORTC 7 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_PORTD 8 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_PORTE 9 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_RCREG 1A 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_SPBRG 99 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISB 86 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISD 88 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TRISE 89 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_TXREG 19 0 ABS 0 - dist/default/production\MP_M.X.production.o
+__end_of_setup 7A6 0 CODE 0 text6 dist/default/production\MP_M.X.production.o
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+_setup 732 0 CODE 0 text6 dist/default/production\MP_M.X.production.o
+_SSPSTATbits 94 0 ABS 0 - dist/default/production\MP_M.X.production.o
+_Lcd_Cmd 5C4 0 CODE 0 text15 dist/default/production\MP_M.X.production.o
+spiInit@sClockIdle 71 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__initialization FE6 0 CODE 0 cinit dist/default/production\MP_M.X.production.o
+___bmul@product 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\MP_M.X.production.o
+_spiWrite 4A4 0 CODE 0 text20 dist/default/production\MP_M.X.production.o
+__pstrings 6 0 STRING 0 strings dist/default/production\MP_M.X.production.o
+___wmul@product 74 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__end_of_spiReceiveWait 4CA 0 CODE 0 text22 dist/default/production\MP_M.X.production.o
+USART_ESCRITURA@a 70 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+Lcd_Write_Char@a 72 0 COMMON 1 cstackCOMMON dist/default/production\MP_M.X.production.o
+__end_of_spiWrite 4B0 0 CODE 0 text20 dist/default/production\MP_M.X.production.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 7F3 FE6 D 2
+text1 0 690 D20 163 2
+text2 0 28F 51E 12 2
+text3 0 3D3 7A6 3A 2
+text4 0 44F 89E 44 2
+text5 0 2A1 542 15 2
+text6 0 399 732 3A 2
+text7 0 2CC 598 16 2
+text8 0 2FC 5F8 1E 2
+text9 0 276 4EC C 2
+text10 0 40D 81A 42 2
+text11 0 2B6 56C 16 2
+text12 0 31A 634 24 2
+text13 0 493 926 4B 2
+text14 0 282 504 D 2
+text15 0 2E2 5C4 1A 2
+text16 0 258 4B0 6 2
+text17 0 52E A5C 59 2
+text18 0 363 6C6 36 2
+text19 0 4DE 9BC 50 2
+text20 0 252 4A4 6 2
+text21 0 26D 4DA 9 2
+text22 0 25E 4BC 7 2
+text23 0 33E 67C 25 2
+text24 0 587 B0E 69 2
+maintext 0 5F0 BE0 A0 2
+cstackCOMMON 1 70 70 E 1
+reset_vec 0 0 0 3 2
+bssBANK0 1 20 20 4A 1
+strings 0 3 6 3B 2
+clrtext 0 265 4CA 8 2
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES
