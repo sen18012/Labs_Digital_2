@@ -118,7 +118,7 @@ void main(void) {
         LEER_S1();
         LEER_S2();
         LEER_S3();
-        PORTB = S3;
+//        PORTB = S3;
 //
 //       sprintf(data_S1, "%1.2fV", ADC);
 //       sprintf(data_S2, "%.3i", S2);
