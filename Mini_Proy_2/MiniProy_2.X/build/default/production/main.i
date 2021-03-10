@@ -2909,21 +2909,23 @@ unsigned short I2C_Master_Read(unsigned short a);
 
 void I2C_Slave_Init(uint8_t address);
 # 41 "main.c" 2
-# 61 "main.c"
-char time[] = "TIME:  :  :  ";
-char calendar[] = "DATE:  /  /  ";
+# 59 "main.c"
+char USART_LEER;
+char time[] = "TIME:   :  :  ";
+char date1[] = "DATE:   /  /20  ";
 
-unsigned int i;
-unsigned int second;
-unsigned int minute;
-unsigned int hour;
-unsigned int date;
-unsigned int month;
-unsigned int year;
-# 79 "main.c"
+
+
+int sec = 00;
+int min = 00;
+int hour = 00;
+int date = 00;
+int month = 00;
+int year = 00;
+# 80 "main.c"
 void setup(void);
-void DS3231(void);
-
+void DS3231_time(void);
+uint8_t bcd_to_decimal(uint8_t number);
 
 
 
@@ -2937,38 +2939,52 @@ void main(void) {
     Lcd_Set_Cursor(1, 1);
     Lcd_Write_String(time);
     Lcd_Set_Cursor(2, 1);
-    Lcd_Write_String(calendar);
+    Lcd_Write_String(date1);
+
+    I2C_Master_Start();
+    I2C_Master_Write(0xD0);
+    I2C_Master_Write(0);
+    I2C_Master_Write(0);
+    I2C_Master_Write(0);
+    I2C_Master_Write(1);
+    I2C_Master_Write(0);
+    I2C_Master_Write(10);
+    I2C_Master_Write(3);
+    I2C_Master_Write(27);
+    I2C_Master_Stop();
+    _delay((unsigned long)((200)*(8000000/4000.0)));
 
     while (1) {
         I2C_Master_Start();
         I2C_Master_Write(0xD0);
         I2C_Master_Write(0);
-        I2C_Master_Start();
+        I2C_Master_RepeatedStart();
         I2C_Master_Write(0xD1);
-        second = I2C_Master_Read(1);
-        minute = I2C_Master_Read(1);
+        sec = I2C_Master_Read(1);
+        min = I2C_Master_Read(1);
         hour = I2C_Master_Read(1);
         I2C_Master_Read(1);
         date = I2C_Master_Read(1);
         month = I2C_Master_Read(1);
         year = I2C_Master_Read(0);
         I2C_Master_Stop();
-        DS3231();
-        _delay((unsigned long)((50)*(8000000/4000.0)));
+
+        DS3231_time();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
 
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String(time);
         Lcd_Set_Cursor(2, 1);
-        Lcd_Write_String(calendar);
+        Lcd_Write_String(date1);
 
         USART_STRING(time);
-        USART_STRING(calendar);
+        USART_STRING(date1);
 
         USART_ESCRITURA(13);
         USART_ESCRITURA(10);
 
     }
-    return;
+
 }
 
 
@@ -2977,15 +2993,18 @@ void main(void) {
 void setup(void) {
     ANSEL = 0;
     ANSELH = 0;
+    TRISA = 0;
     TRISB = 0;
-    TRISE = 0;
+    TRISCbits.TRISC3 = 0;
+    TRISCbits.TRISC6 = 0;
+    TRISCbits.TRISC7 = 1;
     TRISD = 0;
-
-    PORTC = 0;
-    PORTE = 0;
-    PORTD = 0;
+    TRISE = 0;
+    PORTA = 0;
     PORTB = 0;
-
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
     I2C_Master_Init(100000);
 
 
@@ -2998,33 +3017,38 @@ void setup(void) {
     RCSTAbits.SPEN = 1;
     RCSTAbits.CREN = 1;
     RCREG = 0;
-
-
+# 192 "main.c"
 }
 
-void DS3231() {
+uint8_t bcd_to_decimal(uint8_t number) {
+  return((number >> 4) * 10 + (number & 0x0F));
+}
 
-    second = (second >> 4) * 10 + (second & 0x0F);
-    minute = (minute >> 4) * 10 + (minute & 0x0F);
-    hour = (hour >> 4) * 10 + (hour & 0x0F);
-    date = (date >> 4) * 10 + (date & 0x0F);
-    month = (month >> 4) * 10 + (month & 0x0F);
-    year = (year >> 4) * 10 + (year & 0x0F);
+void DS3231_time() {
 
 
 
+  sec = bcd_to_decimal(sec);
+  min = bcd_to_decimal(min);
+  hour = bcd_to_decimal(hour);
+  date = bcd_to_decimal(date);
+  month = bcd_to_decimal(month);
+  year = bcd_to_decimal(year);
 
-    time[12] = second % 10 + 48;
-    time[11] = second / 10 + 48;
-    time[9] = minute % 10 + 48;
-    time[8] = minute / 10 + 48;
-    time[6] = hour % 10 + 48;
-    time[5] = hour / 10 + 48;
-    calendar[12] = year % 10 + 48;
-    calendar[11] = year / 10 + 48;
-    calendar[9] = month % 10 + 48;
-    calendar[8] = month / 10 + 48;
-    calendar[6] = date % 10 + 48;
-    calendar[5] = date / 10 + 48;
+
+
+  time[6] = hour / 10 + '0';
+  time[7] = hour % 10 + '0';
+  time[9] = min / 10 + '0';
+  time[10] = min % 10 + '0';
+  time[12] = sec / 10 + '0';
+  time[13] = sec % 10 + '0';
+
+  date1[6] = date / 10 + '0';
+  date1[7] = date % 10 + '0';
+  date1[9] = month / 10 + '0';
+  date1[10] = month % 10 + '0';
+  date1[14] = year / 10 + '0';
+  date1[15] = year % 10 + '0';
 
 }

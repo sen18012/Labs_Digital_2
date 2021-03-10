@@ -78,7 +78,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="178" x="693" flags="00000001" y="233" h="86" pid="1" iid="3">
+   <POPUP w="178" x="693" flags="00000000" y="233" h="86" pid="1" iid="3">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="228" flags="00000009" y="340" h="32" pid="2" iid="3">
@@ -91,13 +91,13 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="48" flags="00000023" y="160" h="250" pid="0" iid="10">
+   <POPUP w="450" x="48" flags="00000022" y="160" h="250" pid="0" iid="10">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="48" flags="00008023" y="160" h="250" pid="0" iid="12">
+   <POPUP w="450" x="48" flags="00000023" y="160" h="250" pid="0" iid="12">
     <PROPERTIES>
      <ITEM name="ComboBox1000">S</ITEM>
      <ITEM name="ComboBox1001">Sr</ITEM>
