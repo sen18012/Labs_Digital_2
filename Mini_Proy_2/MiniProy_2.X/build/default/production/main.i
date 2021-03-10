@@ -2913,6 +2913,9 @@ void I2C_Slave_Init(uint8_t address);
 char USART_LEER;
 char time[] = "TIME:   :  :  ";
 char date1[] = "DATE:   /  /20  ";
+char datos[];
+int led;
+
 
 
 
@@ -2922,7 +2925,30 @@ int hour = 00;
 int date = 00;
 int month = 00;
 int year = 00;
-# 80 "main.c"
+
+
+
+
+
+void __attribute__((picinterrupt(("")))) ISR(void) {
+    if (PIR1bits.RCIF == 1) {
+        PIR1bits.RCIF = 0;
+        led = RCREG;
+    }
+    if (led == 0X0A) {
+        PORTE = 0;
+    } else if (led == 0X0B) {
+        PORTE = 1;
+    } else if (led == 0X0C) {
+        PORTE = 0;
+    } else if (led == 0X0D) {
+        PORTE = 2;
+    }
+    return;
+}
+
+
+
 void setup(void);
 void DS3231_time(void);
 uint8_t bcd_to_decimal(uint8_t number);
@@ -2977,8 +3003,10 @@ void main(void) {
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(date1);
 
-        USART_STRING(time);
-        USART_STRING(date1);
+        sprintf(datos, "%.0i", sec);
+
+
+        USART_STRING(datos);
 
         USART_ESCRITURA(13);
         USART_ESCRITURA(10);
@@ -3017,7 +3045,14 @@ void setup(void) {
     RCSTAbits.SPEN = 1;
     RCSTAbits.CREN = 1;
     RCREG = 0;
-# 192 "main.c"
+
+
+    PIE1bits.RCIE = 1;
+    PIE1bits.TXIE = 0;
+    PIR1bits.RCIF = 0;
+
+    INTCONbits.GIE = 1;
+# 219 "main.c"
 }
 
 uint8_t bcd_to_decimal(uint8_t number) {

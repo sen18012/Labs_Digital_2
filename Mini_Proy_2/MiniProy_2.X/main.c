@@ -59,6 +59,9 @@
 char USART_LEER;
 char time[] = "TIME:   :  :  ";
 char date1[] = "DATE:   /  /20  ";
+char datos[];
+int led;
+
 
 
 /*Set the current value of date and time below*/
@@ -73,7 +76,22 @@ int year = 00;
 //**************************
 //INTERRUPCIONES
 //************************** 
-
+//void __interrupt() ISR(void) {
+//    if (PIR1bits.RCIF == 1) {
+//        PIR1bits.RCIF = 0; //Resetea bandera RCIF
+//        led = RCREG;       //Se lee el registro y se guarda
+//    }
+//    if (led == 0X0A) {      //Dependiendo del dato que entra en RX enciende o apaga las leds
+//        PORTE = 0;          //depende de los botones en el IOT cloud
+//    } else if (led == 0X0B) {
+//        PORTE = 1;
+//    } else if (led == 0X0C) {
+//        PORTE = 0;
+//    } else if (led == 0X0D) {
+//        PORTE = 2;
+//    }
+//    return;
+//}
 //***************************
 // PROTOTIPOS DE FUNCIONES
 //***************************
@@ -131,8 +149,10 @@ void main(void) {
         Lcd_Set_Cursor(2, 1); // Go to column 1 row 2
         Lcd_Write_String(date1);
 
-        USART_STRING(time); //enviamos el string con la info
-        USART_STRING(date1); //enviamos el string con la info
+        sprintf(datos, "%.0i", sec);
+//        USART_STRING(time); //enviamos el string con la info
+//        USART_STRING(date1); //enviamos el string con la info
+        USART_STRING(datos); //enviamos el string con la info
 
         USART_ESCRITURA(13); //Salto de linea en la terminal, para que se entienda mejor
         USART_ESCRITURA(10);
@@ -171,6 +191,13 @@ void setup(void) {
     RCSTAbits.SPEN = 1; // ENABLE
     RCSTAbits.CREN = 1;
     RCREG = 0;
+    
+    //INTERRUP
+    PIE1bits.RCIE = 1;
+    PIE1bits.TXIE = 0; //No se habilitan interrupciones en el envio
+    PIR1bits.RCIF = 0; //Se apaga la interrupcion
+
+    INTCONbits.GIE = 1; //Interrupciones del timer
     
 //        //Transmision
 //    TXSTAbits.TXEN = 1; //Se habilita TX

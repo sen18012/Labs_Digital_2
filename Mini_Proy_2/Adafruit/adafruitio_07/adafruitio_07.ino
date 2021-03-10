@@ -22,8 +22,11 @@
 // this int will hold the current count for our sketch
 int hora = 0;
 int fecha = 0;
+char datos;
 #define LED_PIN 2
 #define LED_PIN1 5
+#define RXD2 16
+#define TXD2 17
 
 // Track time of last published messages and limit feed->save events to once
 // every IO_LOOP_DELAY milliseconds.
@@ -44,11 +47,14 @@ AdafruitIO_Feed *enviarFeed1 = io.feed("sensor2");
 AdafruitIO_Feed *recibirFeed = io.feed("piloto1");
 AdafruitIO_Feed *recibirFeed1 = io.feed("piloto2");
 
-void setup() {
+void setup() { 
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_PIN1, OUTPUT);
   // start the serial connection
-  Serial.begin(115200);
+   Serial.begin(115200);
+   Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+   delay(1000);
+   Serial.println("Loopback program started");
 
   // wait for serial monitor to open
   while (! Serial);
@@ -80,19 +86,27 @@ void setup() {
 }
 
 void loop() {
-
+  if (Serial.available()){
+    Serial.write("-");
+    Serial2.write(Serial.read());
+  }
+  if (Serial2.available()){
+    Serial.write(Serial2.read());
+    Serial.println(Serial2.read());
+    datos = Serial2.read();
+  }
   // io.run(); is required for all sketches.
   // it should always be present at the top of your loop
   // function. it keeps the client connected to
   // io.adafruit.com, and processes any incoming data.
   io.run();
-  hora = random(0, 100);
-  fecha = random(0, 100);
+  // hora = random(0, 100);
+  // fecha = random(0, 100);
   if (millis() > (lastUpdate + IO_LOOP_DELAY)) {
     // save count to the 'counter' feed on Adafruit IO
     Serial.print("sending -> ");
-    Serial.println(hora);
-    enviarFeed->save(hora);
+    Serial.println(datos);
+    enviarFeed->save(datos);
     Serial.print("sending -> ");
     Serial.println(fecha);
     enviarFeed1->save(fecha);
