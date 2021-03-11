@@ -55,15 +55,15 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "94
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"79 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+"85 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"106
+"118
 [v _main main `(v  1 e 1 0 ]
-"167
+"179
 [v _setup setup `(v  1 e 1 0 ]
-"221
+"218
 [v _bcd_to_decimal bcd_to_decimal `(uc  1 e 1 0 ]
-"225
+"222
 [v _DS3231_time DS3231_time `(v  1 e 1 0 ]
 "13 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\USART.c
 [v _USART_ESCRITURA USART_ESCRITURA `(v  1 e 1 0 ]
@@ -73,13 +73,25 @@
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+[s S24 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S33 . 1 `S24 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES33  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S252 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S153 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -89,29 +101,18 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S261 . 1 `uc 1 . 1 0 :2:0 
+[s S162 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S266 . 1 `S252 1 . 1 0 `S261 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES266  1 e 1 @11 ]
-[s S22 . 1 `uc 1 TMR1IF 1 0 :1:0 
-`uc 1 TMR2IF 1 0 :1:1 
-`uc 1 CCP1IF 1 0 :1:2 
-`uc 1 SSPIF 1 0 :1:3 
-`uc 1 TXIF 1 0 :1:4 
-`uc 1 RCIF 1 0 :1:5 
-`uc 1 ADIF 1 0 :1:6 
-]
-"553
-[u S30 . 1 `S22 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES30  1 e 1 @12 ]
+[u S167 . 1 `S153 1 . 1 0 `S162 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES167  1 e 1 @11 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S189 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S243 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -121,18 +122,18 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S198 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S252 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S202 . 1 `uc 1 . 1 0 :6:0 
+[s S256 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S205 . 1 `uc 1 . 1 0 :6:0 
+[s S259 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S208 . 1 `S189 1 . 1 0 `S198 1 . 1 0 `S202 1 . 1 0 `S205 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES208  1 e 1 @24 ]
+[u S262 . 1 `S243 1 . 1 0 `S252 1 . 1 0 `S256 1 . 1 0 `S259 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES262  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
@@ -141,7 +142,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S119 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S121 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -151,13 +152,13 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S128 . 1 `S119 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES128  1 e 1 @135 ]
+[u S130 . 1 `S121 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES130  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S233 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S185 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -166,11 +167,11 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S241 . 1 `S233 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES241  1 e 1 @140 ]
+[u S193 . 1 `S185 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES193  1 e 1 @140 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S406 . 1 `uc 1 SEN 1 0 :1:0 
+[s S410 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -180,13 +181,13 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S415 . 1 `S406 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES415  1 e 1 @145 ]
+[u S419 . 1 `S410 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES419  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S152 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S206 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -196,15 +197,15 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S161 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S215 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S165 . 1 `uc 1 . 1 0 :6:0 
+[s S219 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S168 . 1 `S152 1 . 1 0 `S161 1 . 1 0 `S165 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES168  1 e 1 @152 ]
+[u S222 . 1 `S206 1 . 1 0 `S215 1 . 1 0 `S219 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES222  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2704
@@ -235,50 +236,50 @@
 [v _TRMT TRMT `VEb  1 e 0 @1217 ]
 "358 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _dpowers dpowers `DC[5]ui  1 s 10 dpowers ]
-"60 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+"65 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+[v _USART_LEER USART_LEER `uc  1 e 1 0 ]
+"66
 [v _time time `[15]uc  1 e 15 0 ]
-"61
+"67
 [v _date1 date1 `[17]uc  1 e 17 0 ]
-"62
-[v _datos datos `[1]uc  1 e 1 0 ]
-"63
-[v _led led `i  1 e 2 0 ]
 "68
+[v _datos datos `[1]uc  1 e 1 0 ]
+"74
 [v _sec sec `i  1 e 2 0 ]
-"69
+"75
 [v _min min `i  1 e 2 0 ]
-"70
+"76
 [v _hour hour `i  1 e 2 0 ]
-"71
+"77
 [v _date date `i  1 e 2 0 ]
-"72
+"78
 [v _month month `i  1 e 2 0 ]
-"73
+"79
 [v _year year `i  1 e 2 0 ]
-"106
+"118
 [v _main main `(v  1 e 1 0 ]
 {
-"162
+"174
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
 "545
-[v sprintf@val val `ui  1 a 2 21 ]
+[v sprintf@val val `ui  1 a 2 18 ]
 "512
-[v sprintf@c c `uc  1 a 1 24 ]
+[v sprintf@c c `uc  1 a 1 21 ]
 "521
-[v sprintf@prec prec `c  1 a 1 23 ]
+[v sprintf@prec prec `c  1 a 1 20 ]
 "525
-[v sprintf@flag flag `uc  1 a 1 19 ]
+[v sprintf@flag flag `uc  1 a 1 16 ]
 "507
-[v sprintf@ap ap `[1]*.4v  1 a 1 18 ]
+[v sprintf@ap ap `[1]*.4v  1 a 1 15 ]
 "505
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
-[v sprintf@f f `*.24DCuc  1 p 1 12 ]
+[v sprintf@f f `*.24DCuc  1 p 1 9 ]
 "550
-[v sprintf@sp sp `*.4uc  1 a 1 20 ]
+[v sprintf@sp sp `*.4uc  1 a 1 17 ]
 "1567
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\isdigit.c
@@ -287,35 +288,35 @@
 [v isdigit@c c `uc  1 a 1 wreg ]
 [v isdigit@c c `uc  1 a 1 wreg ]
 "14
-[v isdigit@c c `uc  1 a 1 5 ]
+[v isdigit@c c `uc  1 a 1 4 ]
 "15
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwmod@counter counter `uc  1 a 1 11 ]
+[v ___lwmod@counter counter `uc  1 a 1 8 ]
 "5
-[v ___lwmod@divisor divisor `ui  1 p 2 7 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 9 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 3 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 5 ]
 "25
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 1 ]
 "11
-[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+[v ___lwdiv@counter counter `uc  1 a 1 0 ]
 "5
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 3 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
 "30
 } 0
-"167 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+"179 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"219
+"216
 } 0
 "16 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -340,11 +341,11 @@
 {
 [v USART_STRING@a a `*.4uc  1 a 1 wreg ]
 "18
-[v USART_STRING@i i `uc  1 a 1 1 ]
+[v USART_STRING@i i `uc  1 a 1 6 ]
 "17
 [v USART_STRING@a a `*.4uc  1 a 1 wreg ]
 "19
-[v USART_STRING@a a `*.4uc  1 a 1 0 ]
+[v USART_STRING@a a `*.4uc  1 a 1 5 ]
 "22
 } 0
 "13
@@ -352,7 +353,7 @@
 {
 [v USART_ESCRITURA@a a `uc  1 a 1 wreg ]
 [v USART_ESCRITURA@a a `uc  1 a 1 wreg ]
-[v USART_ESCRITURA@a a `uc  1 a 1 4 ]
+[v USART_ESCRITURA@a a `uc  1 a 1 3 ]
 "16
 } 0
 "94 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\LCD.c
@@ -360,11 +361,11 @@
 {
 [v Lcd_Write_String@a a `*.4uc  1 a 1 wreg ]
 "96
-[v Lcd_Write_String@i i `i  1 a 2 2 ]
+[v Lcd_Write_String@i i `i  1 a 2 0 ]
 "94
 [v Lcd_Write_String@a a `*.4uc  1 a 1 wreg ]
 "97
-[v Lcd_Write_String@a a `*.4uc  1 a 1 4 ]
+[v Lcd_Write_String@a a `*.4uc  1 a 1 2 ]
 "99
 } 0
 "77
@@ -373,7 +374,7 @@
 [v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
 [v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
 "83
-[v Lcd_Write_Char@a a `uc  1 a 1 0 ]
+[v Lcd_Write_Char@a a `uc  1 a 1 5 ]
 "92
 } 0
 "37
@@ -381,12 +382,12 @@
 {
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
 "39
-[v Lcd_Set_Cursor@temp temp `uc  1 a 1 5 ]
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 2 ]
 "37
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
-[v Lcd_Set_Cursor@b b `uc  1 p 1 2 ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 7 ]
 "40
-[v Lcd_Set_Cursor@a a `uc  1 a 1 4 ]
+[v Lcd_Set_Cursor@a a `uc  1 a 1 1 ]
 "56
 } 0
 "58
@@ -405,7 +406,7 @@
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 "24
-[v Lcd_Cmd@a a `uc  1 a 1 5 ]
+[v Lcd_Cmd@a a `uc  1 a 1 6 ]
 "29
 } 0
 "17
@@ -414,13 +415,13 @@
 [v Lcd_Port@a a `uc  1 a 1 wreg ]
 [v Lcd_Port@a a `uc  1 a 1 wreg ]
 "19
-[v Lcd_Port@a a `uc  1 a 1 4 ]
+[v Lcd_Port@a a `uc  1 a 1 3 ]
 "21
 } 0
 "65 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\I2C.c
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 {
-[v I2C_Master_Write@d d `ui  1 p 2 4 ]
+[v I2C_Master_Write@d d `ui  1 p 2 3 ]
 "69
 } 0
 "55
@@ -442,9 +443,9 @@
 [v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
 {
 "76
-[v I2C_Master_Read@temp temp `us  1 a 2 2 ]
+[v I2C_Master_Read@temp temp `us  1 a 2 0 ]
 "74
-[v I2C_Master_Read@a a `us  1 p 2 4 ]
+[v I2C_Master_Read@a a `us  1 p 2 3 ]
 "89
 } 0
 "32
@@ -452,58 +453,58 @@
 {
 "35
 } 0
-"225 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+"222 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
 [v _DS3231_time DS3231_time `(v  1 e 1 0 ]
 {
-"252
+"249
 } 0
-"221
+"218
 [v _bcd_to_decimal bcd_to_decimal `(uc  1 e 1 0 ]
 {
 [v bcd_to_decimal@number number `uc  1 a 1 wreg ]
 [v bcd_to_decimal@number number `uc  1 a 1 wreg ]
-[v bcd_to_decimal@number number `uc  1 a 1 5 ]
-"223
+[v bcd_to_decimal@number number `uc  1 a 1 7 ]
+"220
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
 {
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v ___bmul@product product `uc  1 a 1 0 ]
+[v ___bmul@product product `uc  1 a 1 5 ]
 "4
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-[v ___bmul@multiplicand multiplicand `uc  1 p 1 4 ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 3 ]
 "6
-[v ___bmul@multiplier multiplier `uc  1 a 1 1 ]
+[v ___bmul@multiplier multiplier `uc  1 a 1 6 ]
 "51
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
-[v ___awmod@sign sign `uc  1 a 1 5 ]
-[v ___awmod@counter counter `uc  1 a 1 4 ]
+[v ___awmod@sign sign `uc  1 a 1 1 ]
+[v ___awmod@counter counter `uc  1 a 1 0 ]
 "5
-[v ___awmod@divisor divisor `i  1 p 2 0 ]
-[v ___awmod@dividend dividend `i  1 p 2 2 ]
+[v ___awmod@divisor divisor `i  1 p 2 3 ]
+[v ___awmod@dividend dividend `i  1 p 2 5 ]
 "34
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+[v ___awdiv@quotient quotient `i  1 a 2 2 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 5 ]
-[v ___awdiv@counter counter `uc  1 a 1 4 ]
+[v ___awdiv@sign sign `uc  1 a 1 1 ]
+[v ___awdiv@counter counter `uc  1 a 1 0 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+[v ___awdiv@divisor divisor `i  1 p 2 3 ]
+[v ___awdiv@dividend dividend `i  1 p 2 5 ]
 "41
 } 0
-"79 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
+"85 C:\Users\katha\Desktop\Labs_Digital_2\Labs_Digital_2\Mini_Proy_2\MiniProy_2.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"94
+"106
 } 0

@@ -7,7 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 13 "main.c"
+# 19 "main.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2510,7 +2510,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 34 "main.c" 2
+# 40 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2645,7 +2645,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 35 "main.c" 2
+# 41 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2744,7 +2744,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 36 "main.c" 2
+# 42 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdlib.h" 1 3
 
@@ -2829,7 +2829,7 @@ extern char * ltoa(char * buf, long val, int base);
 extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
-# 37 "main.c" 2
+# 43 "main.c" 2
 
 
 # 1 "./LCD.h" 1
@@ -2851,7 +2851,7 @@ void Lcd_Write_String(char *a);
 void Lcd_Shift_Right(void);
 
 void Lcd_Shift_Left(void);
-# 39 "main.c" 2
+# 45 "main.c" 2
 
 # 1 "./USART.h" 1
 # 14 "./USART.h"
@@ -2865,7 +2865,7 @@ uint8_t USART_LECTURA (void);
 
 void USART_ESCRITURA (uint8_t a);
 void USART_STRING(char *a);
-# 40 "main.c" 2
+# 46 "main.c" 2
 
 # 1 "./I2C.h" 1
 # 20 "./I2C.h"
@@ -2908,13 +2908,13 @@ unsigned short I2C_Master_Read(unsigned short a);
 
 
 void I2C_Slave_Init(uint8_t address);
-# 41 "main.c" 2
-# 59 "main.c"
+# 47 "main.c" 2
+# 65 "main.c"
 char USART_LEER;
 char time[] = "TIME:   :  :  ";
 char date1[] = "DATE:   /  /20  ";
 char datos[];
-int led;
+char led[];
 
 
 
@@ -2930,21 +2930,27 @@ int year = 00;
 
 
 
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (PIR1bits.RCIF == 1) {
-        PIR1bits.RCIF = 0;
-        led = RCREG;
+void __attribute__((picinterrupt(("")))) ISR(void){
+    if (RCIF == 1) {
+        USART_LEER = RCREG;
+        if (USART_LEER == '1') {
+            if (PORTBbits.RB0 == 0){
+               PORTBbits.RB0 = 1;
+            }
+            else if (PORTBbits.RB0 == 1){
+                PORTBbits.RB0 = 0;
+            }
+        }
+        else if (USART_LEER == '2') {
+            if (PORTBbits.RB1 == 0){
+               PORTBbits.RB1 = 1;
+            }
+            else if (PORTBbits.RB1 == 1){
+                PORTBbits.RB1 = 0;
+            }
+        }
+        USART_LEER = 0;
     }
-    if (led == 0X0A) {
-        PORTE = 0;
-    } else if (led == 0X0B) {
-        PORTE = 1;
-    } else if (led == 0X0C) {
-        PORTE = 0;
-    } else if (led == 0X0D) {
-        PORTE = 2;
-    }
-    return;
 }
 
 
@@ -3003,7 +3009,7 @@ void main(void) {
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(date1);
 
-        sprintf(datos, "%.0i", sec);
+        sprintf(datos, "%.0i",sec);
 
 
         USART_STRING(datos);
@@ -3036,6 +3042,13 @@ void setup(void) {
     I2C_Master_Init(100000);
 
 
+
+
+    INTCONbits.PEIE = 1;
+    PIE1bits.RCIE = 1;
+    INTCONbits.GIE = 1;
+
+
     SPBRGH = 0;
     SPBRG = 12;
 
@@ -3047,12 +3060,7 @@ void setup(void) {
     RCREG = 0;
 
 
-    PIE1bits.RCIE = 1;
-    PIE1bits.TXIE = 0;
-    PIR1bits.RCIF = 0;
 
-    INTCONbits.GIE = 1;
-# 219 "main.c"
 }
 
 uint8_t bcd_to_decimal(uint8_t number) {

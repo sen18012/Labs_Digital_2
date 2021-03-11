@@ -5,6 +5,12 @@
  * Created on 5 de marzo de 2021, 10:48 PM
  */
 
+//Algunas de las funciones utilizadas para la lectura del RCT3231 con I2C 
+//se obtivieron del siguiente enlace:
+//https://simple-circuit.com/pic16f887-ds3231-real-time-clock/
+//Estas funciones fueron adaptadas para el funcionamiento correcto del
+//Mini Proyecto 2 por Katharine Senn carná 18012
+
 //***************************
 //***************************
 // Palabra de configuración
@@ -60,7 +66,7 @@ char USART_LEER;
 char time[] = "TIME:   :  :  ";
 char date1[] = "DATE:   /  /20  ";
 char datos[];
-int led;
+char led[];
 
 
 
@@ -76,22 +82,28 @@ int year = 00;
 //**************************
 //INTERRUPCIONES
 //************************** 
-//void __interrupt() ISR(void) {
-//    if (PIR1bits.RCIF == 1) {
-//        PIR1bits.RCIF = 0; //Resetea bandera RCIF
-//        led = RCREG;       //Se lee el registro y se guarda
-//    }
-//    if (led == 0X0A) {      //Dependiendo del dato que entra en RX enciende o apaga las leds
-//        PORTE = 0;          //depende de los botones en el IOT cloud
-//    } else if (led == 0X0B) {
-//        PORTE = 1;
-//    } else if (led == 0X0C) {
-//        PORTE = 0;
-//    } else if (led == 0X0D) {
-//        PORTE = 2;
-//    }
-//    return;
-//}
+void __interrupt() ISR(void){        
+    if (RCIF == 1) {
+        USART_LEER = RCREG;
+        if (USART_LEER == '1') { //comparar lo ingresado a la terminal con '+'
+            if (PORTBbits.RB0 == 0){
+               PORTBbits.RB0 = 1;
+            }
+            else if (PORTBbits.RB0 == 1){
+                PORTBbits.RB0 = 0;
+            }
+        }
+        else if (USART_LEER == '2') {//comparar lo ingresado a la terminal con '-'
+            if (PORTBbits.RB1 == 0){
+               PORTBbits.RB1 = 1;
+            }
+            else if (PORTBbits.RB1 == 1){
+                PORTBbits.RB1 = 0;
+            }
+        }
+        USART_LEER = 0; //regresamos a 0 para que no siga realizando la función ni se sobre escriba
+    }
+}
 //***************************
 // PROTOTIPOS DE FUNCIONES
 //***************************
@@ -149,7 +161,7 @@ void main(void) {
         Lcd_Set_Cursor(2, 1); // Go to column 1 row 2
         Lcd_Write_String(date1);
 
-        sprintf(datos, "%.0i", sec);
+        sprintf(datos, "%.0i",sec);
 //        USART_STRING(time); //enviamos el string con la info
 //        USART_STRING(date1); //enviamos el string con la info
         USART_STRING(datos); //enviamos el string con la info
@@ -180,6 +192,13 @@ void setup(void) {
     PORTD = 0;
     PORTE = 0;
     I2C_Master_Init(100000);        // Inicializar Comuncación I2C
+    
+
+
+    //INTERRUPCION
+    INTCONbits.PEIE = 1;
+    PIE1bits.RCIE = 1;
+    INTCONbits.GIE = 1;
 
     // USART CONFIG
     SPBRGH = 0;
@@ -191,30 +210,8 @@ void setup(void) {
     RCSTAbits.SPEN = 1; // ENABLE
     RCSTAbits.CREN = 1;
     RCREG = 0;
-    
-    //INTERRUP
-    PIE1bits.RCIE = 1;
-    PIE1bits.TXIE = 0; //No se habilitan interrupciones en el envio
-    PIR1bits.RCIF = 0; //Se apaga la interrupcion
 
-    INTCONbits.GIE = 1; //Interrupciones del timer
-    
-//        //Transmision
-//    TXSTAbits.TXEN = 1; //Se habilita TX
-//    TXSTAbits.SYNC = 0; //modo Asíncrono
-//    RCSTAbits.SPEN = 1; //Se habilita RX
-//    TXSTAbits.TX9 = 0; //Se transmiten 8 bits
-//
-//    //Lectura
-//    RCSTAbits.CREN = 1; //Se habilita recibir datos
-//    RCSTAbits.RX9 = 0; //Se reciben solo 8 bits
-//
-//    //ENCENDEMOS INTERRUPCIONES
-//    PIE1bits.RCIE = 1;
-//    PIE1bits.TXIE = 0; //No se habilitan interrupciones en el envio
-//    PIR1bits.RCIF = 0; //Se apaga la interrupcion
-//
-//    INTCONbits.GIE = 1; //Interrupciones del timer
+
    
 }
 // convert BCD to decimal function

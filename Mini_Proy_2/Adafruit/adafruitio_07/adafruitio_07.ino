@@ -23,8 +23,10 @@
 int hora = 0;
 int fecha = 0;
 char datos;
+char led1;
+char led2;
 #define LED_PIN 2
-#define LED_PIN1 5
+#define LED_PIN1 0
 #define RXD2 16
 #define TXD2 17
 
@@ -43,7 +45,6 @@ unsigned long lastUpdate = 0;
 
 // set up the 'counter' feed
 AdafruitIO_Feed *enviarFeed = io.feed("sensor");
-AdafruitIO_Feed *enviarFeed1 = io.feed("sensor2");
 AdafruitIO_Feed *recibirFeed = io.feed("piloto1");
 AdafruitIO_Feed *recibirFeed1 = io.feed("piloto2");
 
@@ -51,8 +52,8 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_PIN1, OUTPUT);
   // start the serial connection
-   Serial.begin(115200);
-   Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+   Serial.begin(9600);
+   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
    delay(1000);
    Serial.println("Loopback program started");
 
@@ -87,13 +88,14 @@ void setup() {
 
 void loop() {
   if (Serial.available()){
-    Serial.write("-");
+    Serial.write(led1);
+    Serial.write(led2);
     Serial2.write(Serial.read());
   }
-  if (Serial2.available()){
-    Serial.write(Serial2.read());
-    Serial.println(Serial2.read());
+  if (Serial2.available()>0){
+    //Serial.write(Serial2.read());
     datos = Serial2.read();
+    Serial.println(Serial2.read());
   }
   // io.run(); is required for all sketches.
   // it should always be present at the top of your loop
@@ -107,10 +109,10 @@ void loop() {
     Serial.print("sending -> ");
     Serial.println(datos);
     enviarFeed->save(datos);
-    Serial.print("sending -> ");
-    Serial.println(fecha);
-    enviarFeed1->save(fecha);
-
+ //   Serial.print("sending -> ");
+   // Serial.println(fecha);
+    //enviarFeed1->save(fecha);
+    delay(3000);
     // increment the count by 1
     //count++;
 
@@ -125,27 +127,31 @@ void loop() {
 // the counter feed in the setup() function above.
 void handleMessage(AdafruitIO_Data *data) {
 
-  Serial.print("received <- ");
+  //Serial.print("received <- ");
   Serial.println(data->value());
 
   if (data->toString() == "ON") {
     digitalWrite(LED_PIN, HIGH);
+    led1 = '1';
   }
   if (data->toString() == "OFF") {
     digitalWrite(LED_PIN, LOW);
+    led1 = '0';
   }
 
 }
 void handleMessage1(AdafruitIO_Data *data) {
 
-  Serial.print("received <- ");
+  //Serial.print("received <- ");
   Serial.println(data->value());
 
   if (data->toString() == "ON") {
     digitalWrite(LED_PIN1, HIGH);
+    led2 = '2';
   }
   if (data->toString() == "OFF") {
     digitalWrite(LED_PIN1, LOW);
+    led2 = '0';
   }
 
 }
