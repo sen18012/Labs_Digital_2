@@ -45,14 +45,12 @@ void loop() {
         Serial.println("ghost.txt:");
 
         // read from the file until there's nothing else in it:
-        while (myFile.available())
-        {
+        while (myFile.available()){
             Serial.write(myFile.read());
         }
         // close the file:
         myFile.close();
         Serial.println("Si desea ver otro archivo presione el número correspondiente: ");
-
     }
 
     if(file =='2'){
@@ -60,14 +58,12 @@ void loop() {
         Serial.println("hongo.txt:");
 
         // read from the file until there's nothing else in it:
-        while (myFile.available())
-        {
+        while (myFile.available()){
             Serial.write(myFile.read());
         }
         // close the file:
         myFile.close();
         Serial.println("Si desea ver otro archivo presione el número correspondiente: ");
-
     }
 
      if(file == '3'){
@@ -75,16 +71,13 @@ void loop() {
         Serial.println("yinyang.txt:");
 
         // read from the file until there's nothing else in it:
-        while (myFile.available())
-        {
+        while (myFile.available()){
             Serial.write(myFile.read());
         // close the file:
         }
         myFile.close();
         Serial.println("Si desea ver otro archivo presione el número correspondiente: ");
-
      }
-
         else{
         }
 }
