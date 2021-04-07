@@ -18,7 +18,7 @@ void printDirectory(File dir, int NTabs);
 //Setup
 void setup() {
   Serial.begin(115200); //Config comuniación serual
-  SPI.setModule(0); //Confir SPI
+  SPI.setModule(0); //Config SPI
   while (!Serial){
     ; //wait for serial port to connect. 
   }
