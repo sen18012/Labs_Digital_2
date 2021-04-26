@@ -17,11 +17,16 @@
 //***************************************************************************************************************************************
 
 #include "pitches.h"
+const int buttonPin = PC_5;
 int tempo = 140; //tiempo de la música (Para acelerar o alentar la canción)
 int buzzer = 40; //Pin para conectar el buzzer
-const int buttonPin = PUSH2;  //Pin con el que se inicia la reproducción
+volatile byte flag = LOW;
+
 int buttonState = 0; 
-int si = 0;
+void sonido(void);
+//const int buttonPin = PUSH2;  //Pin con el que se inicia la reproducción
+//int buttonState = 0; 
+//int si = 0;
 
 // notes of the moledy followed by the duration.
 // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
@@ -88,77 +93,59 @@ int notes = sizeof(melody) / sizeof(melody[0]) / 2;
 
 // this calculates the duration of a whole note in ms
 int wholenote = (60000 * 4) / tempo;
-
 int divider = 0, noteDuration = 0;
 
 void setup() {
   //pinMode(buttonPin, INPUT_PULLUP);
-
-//  // iterate over the notes of the melody.
-//  // Remember, the array is twice the number of notes (notes + durations)
-//  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
-//
-//    // calculates the duration of each note
-//    divider = melody[thisNote + 1];
-//    if (divider > 0) {
-//      // regular note, just proceed
-//      noteDuration = (wholenote) / divider;
-//    } else if (divider < 0) {
-//      // dotted notes are represented with negative durations!!
-//      noteDuration = (wholenote) / abs(divider);
-//      noteDuration *= 1.5; // increases the duration in half for dotted notes
-//    }
-//
-//    // we only play the note for 90% of the duration, leaving 10% as a pause
-//    tone(buzzer, melody[thisNote], noteDuration * 0.9);
-//
-//    // Wait for the specief duration before playing the next note.
-//    delay(noteDuration);
-//
-//    // stop the waveform generation before the next note.
-//    noTone(buzzer);
-//  }
-}
+  pinMode(buttonPin, INPUT);
+  pinMode (RED_LED, OUTPUT);
+  
+} 
 
 void loop() {
 
-    buttonState = digitalRead(buttonPin);
-    
-  if (buttonState == HIGH) {     
-    // turn LED on:    
-    si = 1;  
-  } 
-  else {
-    // turn LED off:
-    si = 0;; 
-  }
-  
- while (si == 0){
-    // iterate over the notes of the melody.
+   //buttonState = digitalRead(buttonPin);
+   sonido();
+//  if (digitalRead(START == HIGH)){
+//    flag = HIGH;
+//  }
+//  else if (digitalRead(START == LOW)) {
+//    flag = LOW;
+//  }
   // Remember, the array is twice the number of notes (notes + durations)
-  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+//  while (flag == HIGH) { 
+////  if (flag == HIGH){
+//    for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+//      // calculates the duration of each note
+//      divider = melody[thisNote + 1];
+//      if (divider > 0) {
+//        // regular note, just proceed
+//        noteDuration = (wholenote) / divider;
+//      } else if (divider < 0) {
+//        // dotted notes are represented with negative durations!!
+//        noteDuration = (wholenote) / abs(divider);
+//        noteDuration *= 1.5; // increases the duration in half for dotted notes
+//      }
+//      // we only play the note for 90% of the duration, leaving 10% as a pause
+//      tone(buzzer, melody[thisNote], noteDuration * 0.9);
+//
+//      // Wait for the specief duration before playing the next note.
+//      delay(noteDuration);
+//  
+//      // stop the waveform generation before the next note.
+//      noTone(buzzer);
+//    }
+//  }
+}
 
-    // calculates the duration of each note
-    divider = melody[thisNote + 1];
-    if (divider > 0) {
-      // regular note, just proceed
-      noteDuration = (wholenote) / divider;
-    } else if (divider < 0) {
-      // dotted notes are represented with negative durations!!
-      noteDuration = (wholenote) / abs(divider);
-      noteDuration *= 1.5; // increases the duration in half for dotted notes
-    }
-
-    // we only play the note for 90% of the duration, leaving 10% as a pause
-    tone(buzzer, melody[thisNote], noteDuration * 0.9);
-
-    // Wait for the specief duration before playing the next note.
-    delay(noteDuration);
-
-    // stop the waveform generation before the next note.
-    noTone(buzzer);
-  // no need to repeat the melody.
+void sonido(){
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH){
+    digitalWrite(RED_LED, HIGH);
+    //flag = HIGH;
   }
+  else  {
+    digitalWrite(RED_LED, LOW);
+    //flag = LOW;
   }
-
-  }
+}
