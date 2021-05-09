@@ -98,24 +98,24 @@ void setup() {
 
 void loop() {
     for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
-      // calculates the duration of each note
+      // Calculamos la duración de cada nota
      if (digitalRead(buttonPin) == HIGH){
       divider = melody[thisNote + 1];
       if (divider > 0) {
-        // regular note, just proceed
+        // Si la nota es regular, seguimos sin hacer cambios
         noteDuration = (wholenote) / divider;
       } else if (divider < 0) {
-        // dotted notes are represented with negative durations!!
+        // Si el valor es negativo se representa una nota con punto (nota y media)
         noteDuration = (wholenote) / abs(divider);
-        noteDuration *= 1.5; // increases the duration in half for dotted notes
+        noteDuration *= 1.5; //Por lo que se multiplica por 1.5
       }
-      // we only play the note for 90% of the duration, leaving 10% as a pause
+      // Suena únicamente el 90% de la duración de la nota para tener un 10% de pausa entren otas
       tone(buzzer, melody[thisNote], noteDuration * 0.9);
 
-      // Wait for the specief duration before playing the next note.
+      // Esperamos la duración de cada nota específica antes de seguir a la siguiente nota
       delay(noteDuration);
   
-      // stop the waveform generation before the next note.
+      // Tocamos una nota "vacía" antes de tocar la siguiente nota
       noTone(buzzer);
     }
     else {
