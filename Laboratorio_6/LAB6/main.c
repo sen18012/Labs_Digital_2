@@ -38,7 +38,7 @@ uint32_t msec_ON = 500;
 //**************************************************************************************************************
 // PROTOTIPOS DE FUNCIONES
 //**************************************************************************************************************
-void delay(uint32_t msec);
+void delay(uint32_t sec);
 void delay1ms(void);
 
 //**************************************************************************************************************
@@ -47,8 +47,9 @@ void delay1ms(void);
 int main(void)
 {
     //CONGIF DE FRECUENCIA (DISTINTOS VALORES)
-    //SysCtlClockSet(SYSCTL_SYSDIV_2 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN| SYSCTL_XTAL_32MHZ);  //FREQ - 32MHz
-    SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN| SYSCTL_XTAL_16MHZ);  //FREQ - 16MHz
+    //SysCtlClockSet(SYSCTL_SYSDIV_3 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN| SYSCTL_XTAL_16MHZ);
+    //SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN| SYSCTL_XTAL_16MHZ);
+    SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN| SYSCTL_XTAL_16MHZ);  //FREQ - 16MHz
 
     // CONFIG RELOJ EN F / PINES PB Y LEDS
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); //Configuramos en F
@@ -106,9 +107,9 @@ int main(void)
 //**************************************************************************************************************
 // FUNCIONES
 //**************************************************************************************************************
-void delay(uint32_t msec)
+void delay(uint32_t sec)
 {
-    for (i = 0; i < msec; i++)
+    for (i = 0; i < sec; i++)
     {
         delay1ms();
     }
