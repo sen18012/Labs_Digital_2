@@ -88,91 +88,29 @@ void handle_OnConnect() {
   //LED1status = LOW;
   Serial.println(parqueos);
   server.send(200, "text/html", SendHTML(parqueos));
-  //server.send(200, "text/html", LoadHTML());
 }
-//************************************************************************************************
-// Handler de led1on
-//************************************************************************************************
-//void handle_led1on() {
-//  LED1status = HIGH;
-//  Serial.println("GPIO2 Status: ON");
-//  server.send(200, "text/html", SendHTML(parqueos));
-//}
-//************************************************************************************************
-// Handler de led1off
-//************************************************************************************************
-//void handle_led1off() {
-//  LED1status = LOW;
-//  Serial.println("GPIO2 Status: OFF");
-//  server.send(200, "text/html", SendHTML(parqueos));
-//}
+
 //************************************************************************************************
 // Procesador de HTML
 //************************************************************************************************
-String LoadHTML() {
-  String load = "<html>\n";
-  load += "<head>\n";
-  load += "<title>Example</title>\n";
-  load += "<script>\n";
-  load += "<!--\n";
-  load += "function timedRefresh(timeoutPeriod) {\n";
-  load += "\tsetTimeout(\"location.reload(true);\",timeoutPeriod);\n";
-  load += "}\n";
-  load += "\n";
-  load += "window.onload = timedRefresh(1000);\n";
-  load += "\n";
-  load += "//   -->\n";
-  load += "</script>\n";
-  load += "</head>\n";
-  load += "<body>\n";
-  load += "<p>This page will refresh every 5 seconds. This is because we're using the 'onload' event to call our function. We are passing in the value '5000', which equals 5 seconds.</p>\n";
-  load += "<img src=\"/pix/samples/4s.jpg\" alt=\"Sample image\">\n";
-  load += "<p>But hey, try not to annoy your users too much with unnecessary page refreshes every few seconds!</p>\n";
-  load += "</body>\n";
-  load += "</html>";
-}
-
-
-
 String SendHTML(uint8_t parqueos) {
   String ptr = "<!DOCTYPE html> <html>\n";
   ptr += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
   ptr += "<title>PARQUEO-MATIC</title>\n";
-  ptr += "<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
+  ptr += "<style>html { font-family: Century Gothic; display: inline-block; margin: 0px auto; text-align: center;}\n";
   ptr += "body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
   ptr += ".button {display: block;width: 80px;background-color: #3498db;border: none;color: white;padding: 15px 30px;text-decoration: none;display: inline-block; font-size: 15px;margin: 4px auto 35px;cursor: pointer;border-radius: 2px;}\n";
   ptr += ".button1 {background-color: #4CAF50;}\n"; /* Green */
   ptr += ".button2 {background-color: #DC143C;}\n";/* Red */
-//  ptr += ".button1 {display: block;width: 80px;background-color: #3498db;border: none;color: white;padding: 13px 30px;text-decoration: none;font-size: 25px;margin: 0px auto 35px;cursor: pointer;border-radius: 4px;}\n";
-//  ptr += ".button-on {background-color: #3498db;}\n";
-//  ptr += ".button-on:active {background-color: #2980b9;}\n";
-//  ptr += ".button-off {background-color: #34495e;}\n";
-//  ptr += ".button-off:active {background-color: #2c3e50;}\n";
-//  ptr += "p {font-size: 14px;color: #888;margin-bottom: 10px;}\n";
   ptr += "</style>\n";
   ptr += "</head>\n";
   ptr += "<body>\n";
   ptr += "<h1>PARQUEO - MATIC &#128664</h1>\n";
-  ptr += "<h3>Control de Parqueos</h3>\n";
+  //ptr += "<h3>Control de Parqueos</h3>\n";
 
-//  if (led1stat)
-//  {
-//    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-//    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-//    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-//    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-//  }
-//  else
-//  {
-//    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
-//    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
-//    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
-//    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
-//  }
-
-//
     if (parqueos == 65)
   {
+    ptr += "<h3>Parqueos Disponibles : 4</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
@@ -180,6 +118,7 @@ String SendHTML(uint8_t parqueos) {
   }
   else if (parqueos == 66)
   {
+    ptr += "<h3>Parqueos Disponibles : 3</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
@@ -187,106 +126,135 @@ String SendHTML(uint8_t parqueos) {
   }
     else if (parqueos == 67)
   {
+    ptr += "<h3>Parqueos Disponibles : 3</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 68)
   {
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 69)
   {
+    ptr += "<h3>Parqueos Disponibles : 3</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 70)
   {
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 71)
   {
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 72)
   {
+    ptr += "<h3>Parqueos Disponibles : 1</h3>\n";
     ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 73)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 3</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 74)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 75)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 76)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 1</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 77)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 2</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 78)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 1</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
     else if (parqueos == 79)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 1</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 4:</p><a class=\"button button1\">DISPONIBLE</a>\n";
   }
     else if (parqueos == 80)
   {
-    ptr += "<p>Parqueo 1:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 2:</p><a class=\"button button1\">DISPONIBLE</a>\n";
-    ptr += "<p>Parqueo 3:</p><a class=\"button button1\">DISPONIBLE</a>\n";
+    ptr += "<h3>Parqueos Disponibles : 0</h3>\n";
+    ptr += "<p>Parqueo 1:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 2:</p><a class=\"button button2\">OCUPADO</a>\n";
+    ptr += "<p>Parqueo 3:</p><a class=\"button button2\">OCUPADO</a>\n";
     ptr += "<p>Parqueo 4:</p><a class=\"button button2\">OCUPADO</a>\n";
   }
 
 
   ptr += "</body>\n";
   ptr += "</html>\n";
+
+  // refresh
+  ptr += "<script>\n";
+  ptr += "<!--\n";
+  ptr += "function timedRefresh(timeoutPeriod) {\n";
+  ptr += "\tsetTimeout(\"location.reload(true);\",timeoutPeriod);\n";
+  ptr += "}\n";
+  ptr += "\n";
+  ptr += "window.onload = timedRefresh(500);\n";
+  ptr += "\n";
+  ptr += "//   -->\n";
+  ptr += "</script>\n";
+  ptr += "</body>\n";
+  ptr += "</html>\n";
+  
   return ptr;
 }
 //************************************************************************************************
