@@ -69,6 +69,7 @@ void setup() {
 void loop() {
 
   server.handleClient();
+  //server.send(200, "text/html", LoadHTML());
   
   if (Serial2.available()>0){
     //read the incoming byte:
@@ -87,6 +88,7 @@ void handle_OnConnect() {
   //LED1status = LOW;
   Serial.println(parqueos);
   server.send(200, "text/html", SendHTML(parqueos));
+  //server.send(200, "text/html", LoadHTML());
 }
 //************************************************************************************************
 // Handler de led1on
@@ -107,6 +109,31 @@ void handle_OnConnect() {
 //************************************************************************************************
 // Procesador de HTML
 //************************************************************************************************
+String LoadHTML() {
+  String load = "<html>\n";
+  load += "<head>\n";
+  load += "<title>Example</title>\n";
+  load += "<script>\n";
+  load += "<!--\n";
+  load += "function timedRefresh(timeoutPeriod) {\n";
+  load += "\tsetTimeout(\"location.reload(true);\",timeoutPeriod);\n";
+  load += "}\n";
+  load += "\n";
+  load += "window.onload = timedRefresh(1000);\n";
+  load += "\n";
+  load += "//   -->\n";
+  load += "</script>\n";
+  load += "</head>\n";
+  load += "<body>\n";
+  load += "<p>This page will refresh every 5 seconds. This is because we're using the 'onload' event to call our function. We are passing in the value '5000', which equals 5 seconds.</p>\n";
+  load += "<img src=\"/pix/samples/4s.jpg\" alt=\"Sample image\">\n";
+  load += "<p>But hey, try not to annoy your users too much with unnecessary page refreshes every few seconds!</p>\n";
+  load += "</body>\n";
+  load += "</html>";
+}
+
+
+
 String SendHTML(uint8_t parqueos) {
   String ptr = "<!DOCTYPE html> <html>\n";
   ptr += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
