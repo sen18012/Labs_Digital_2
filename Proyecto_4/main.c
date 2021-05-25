@@ -35,22 +35,22 @@
 //**************************************
 // VARIABLES
 //**************************************
-uint32_t parqueo = 0;
+uint32_t parqueo = 0;    //Valor para el Display
 
-uint32_t P1 = 0;
+uint32_t P1 = 0;         //Banderas para cada parqueo
 uint32_t P2 = 0;
 uint32_t P3 = 0;
 uint32_t P4 = 0;
 
-char val = '0';
+char val = '0';         //Valor para enviar
 
 //**************************************
 // PROTOTIPOS DE FUNCIONES
 //**************************************
-void revisar(void);
-void display_7seg(void);
-void datos_uart(void);
-void InitUART(void);
+void revisar(void);             //Revisar que Parqueos están dispobibles
+void display_7seg(void);        //Tambla para 7 segmentos
+void datos_uart(void);          //Elegir que dato debe enviarse
+void InitUART(void);            //Inicialización UART
 
 /**
  * main.c
@@ -105,7 +105,6 @@ int main(void)
     P3 = 0;
     P4 = 0;
 
-    //UARTCharPut(UART1_BASE, '1');
 
 //**************************************
 // MAIN LOOP
@@ -262,7 +261,7 @@ void InitUART(void){
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_UART1)){
     }
 
-    /*Enable the GPIO Port d*/
+    /*Enable the GPIO Port C*/
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
 
     GPIOPinConfigure(GPIO_PC4_U1RX);
@@ -287,34 +286,3 @@ void InitUART(void){
 }
 
 
-//void InitUART(void){
-//
-//    /*Enable the peripheral UART Module 1*/
-//    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-//
-//    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_UART0)){
-//    }
-//
-//    /*Enable the GPIO Port d*/
-//    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-//
-//    GPIOPinConfigure(GPIO_PA0_U0RX);
-//    GPIOPinConfigure(GPIO_PA1_U0TX);
-//
-//    // Se habilitan las interrupciones Globales
-//    IntMasterEnable();
-//
-//    /* Make the UART pins be peripheral controlled. */
-//    GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-//
-//    UARTDisable(UART0_BASE);
-//    /* Sets the configuration of a UART. */
-//    UARTConfigSetExpClk(
-//            UART0_BASE, SysCtlClockGet(), 115200,
-//            (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
-//
-//    IntEnable (INT_UART0);
-//
-//    UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
-//    UARTEnable (UART0_BASE);
-//}

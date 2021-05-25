@@ -23,9 +23,9 @@ const char* password = "7FdCe2f9f8";  //Enter your Password here
 WebServer server(80);  // Object of WebServer(HTTP port, 80 is defult)
 
 
-//uint8_t LED1pin = 2;
-int parqueos = 0;
-bool LED1status = LOW;
+
+int parqueos = 0;     //Var para guardar valor de UART
+
 
 //************************************************************************************************
 // Configuración
@@ -35,10 +35,8 @@ void setup() {
   Serial.println("Try Connecting to ");
   Serial.println(ssid);
 
-  Serial2.begin(115200, SERIAL_8N1, 16, 17);
+  Serial2.begin(115200, SERIAL_8N1, 16, 17); //Config Serial 2 para recibir datos
 
-
-//  pinMode(LED1pin, OUTPUT);
 
   // Connect to your wi-fi modem
   WiFi.begin(ssid, password);
@@ -54,8 +52,6 @@ void setup() {
   Serial.println(WiFi.localIP());  //Show ESP32 IP on serial
 
   server.on("/", handle_OnConnect); // Directamente desde e.g. 192.168.0.8
-//  server.on("/led1on", handle_led1on);
-//  server.on("/led1off", handle_led1off);
   
   server.onNotFound(handle_NotFound);
 
@@ -69,12 +65,10 @@ void setup() {
 void loop() {
 
   server.handleClient();
-  //server.send(200, "text/html", LoadHTML());
   
   if (Serial2.available()>0){
     //read the incoming byte:
     parqueos = Serial2.read();
-//    Serial.println (parqueos);
     }  
 
   
@@ -85,8 +79,7 @@ void loop() {
 // Handler de Inicio página
 //************************************************************************************************
 void handle_OnConnect() {
-  //LED1status = LOW;
-  Serial.println(parqueos);
+  //Serial.println(parqueos);
   server.send(200, "text/html", SendHTML(parqueos));
 }
 
@@ -241,7 +234,7 @@ String SendHTML(uint8_t parqueos) {
   ptr += "</body>\n";
   ptr += "</html>\n";
 
-  // refresh
+  // Automatic Refresh 500ms
   ptr += "<script>\n";
   ptr += "<!--\n";
   ptr += "function timedRefresh(timeoutPeriod) {\n";
